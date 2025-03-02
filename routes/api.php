@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\DuUserController;
 use App\Http\Controllers\Api\IdentityController;
 use App\Http\Controllers\Api\PauloCreditCardController;
 use App\Http\Controllers\Api\PauloUserController;
+use App\Http\Controllers\Api\RomuloProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +56,11 @@ Route::post('/artur/product', [ArturProductController::class, 'store']);
 Route::put('/artur/product/{id}', [ArturProductController::class, 'update']);
 Route::delete('/artur/product/{id}', [ArturProductController::class, 'destroy']);
 
+
+Route::prefix('/romulo')->group(function () {
+    Route::get('/products', [RomuloProductController::class, 'index']);
+    Route::post('/products', [RomuloProductController::class, 'store']);
+    Route::get('/products/{id}', [RomuloProductController::class, 'show']);
+    Route::put('/products/{id}', [RomuloProductController::class, 'update']);
+    Route::delete('/products/{id}', [RomuloProductController::class, 'delete']);
+});

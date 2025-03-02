@@ -1743,6 +1743,346 @@
                     }
                 }
             }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Romulo"
+                ],
+                "summary": "Lista todos os produtos com paginação",
+                "operationId": "a2d327fdd33668b9637f40e8b35d3928",
+                "responses": {
+                    "200": {
+                        "description": "Lista de produtos paginada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "category": {
+                                                        "type": "string",
+                                                        "example": "Eletrônicos"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Smartphone X"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "format": "url",
+                                                        "example": "https://example.com/image.jpg"
+                                                    },
+                                                    "price": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 1999.99
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-03-01T12:00:00Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-03-02T15:30:00Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Romulo"
+                ],
+                "summary": "Cria um novo produto",
+                "operationId": "d006c34baed8855e44cff3a499ad94c4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "category",
+                                    "title",
+                                    "image",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "category": {
+                                        "type": "string",
+                                        "example": "Eletrônicos"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Smartphone X"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "url",
+                                        "example": "https://example.com/image.jpg"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 1999.99
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produto criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "category": {
+                                            "type": "string",
+                                            "example": "Eletrônicos"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Smartphone X"
+                                        },
+                                        "image": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "https://example.com/image.jpg"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 1999.99
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Produto criado com sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "tags": [
+                    "Romulo"
+                ],
+                "summary": "Busca um produto pelo ID",
+                "operationId": "9588b7125c41c93e6d32875c28a21a64",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "category": {
+                                            "type": "string",
+                                            "example": "Eletrônicos"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Smartphone X"
+                                        },
+                                        "image": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "https://example.com/image.jpg"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 1999.99
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-03-01T12:00:00Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-03-02T15:30:00Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Romulo"
+                ],
+                "summary": "Atualiza um produto",
+                "operationId": "f7931a1ef31510957fa855babacfaa27",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "category": {
+                                        "type": "string",
+                                        "example": "Eletrônicos"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Smartphone X"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "url",
+                                        "example": "https://example.com/image.jpg"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 1999.99
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "category": {
+                                            "type": "string",
+                                            "example": "Eletrônicos"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Smartphone X"
+                                        },
+                                        "image": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "https://example.com/image.jpg"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 1999.99
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Produto atualizado com sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Romulo"
+                ],
+                "summary": "Deleta um produto",
+                "operationId": "170b51ac6d2e214e4ba788e28b39abb7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Produto deletado com sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -1912,6 +2252,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Romulo",
+            "description": "Gerenciamento de produtos"
+        },
         {
             "name": "Artur",
             "description": "Artur"
