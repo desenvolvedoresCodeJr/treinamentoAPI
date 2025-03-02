@@ -17,7 +17,7 @@ class RomuloProductController extends Controller
 
     /**
  * @OA\Get(
- *     path="/api/products",
+ *     path="/api/romulo/products",
  *     summary="Lista todos os produtos com paginação",
  *     tags={"Romulo"},
  *     @OA\Response(
@@ -58,7 +58,7 @@ class RomuloProductController extends Controller
 
     /**
  * @OA\Post(
- *     path="/api/products",
+ *     path="/api/romulo/products",
  *     summary="Cria um novo produto",
  *     tags={"Romulo"},
  *     @OA\RequestBody(
@@ -114,7 +114,7 @@ class RomuloProductController extends Controller
     }
 /**
  * @OA\Put(
- *     path="/api/products/{id}",
+ *     path="/api/romulo/products/{id}",
  *     summary="Atualiza um produto",
  *     tags={"Romulo"},
  *     @OA\Parameter(
@@ -178,7 +178,7 @@ class RomuloProductController extends Controller
     }
 /**
  * @OA\Delete(
- *     path="/api/products/{id}",
+ *     path="/api/romulo/products/{id}",
  *     summary="Deleta um produto",
  *     tags={"Romulo"},
  *     @OA\Parameter(
@@ -221,7 +221,7 @@ class RomuloProductController extends Controller
 
     /**
  * @OA\Get(
- *     path="/api/products/{id}",
+ *     path="/api/romulo/products/{id}",
  *     summary="Busca um produto pelo ID",
  *     tags={"Romulo"},
  *     @OA\Parameter(
