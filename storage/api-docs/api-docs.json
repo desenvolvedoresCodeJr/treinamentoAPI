@@ -881,6 +881,451 @@
                 }
             }
         },
+        "api/bressan/products": {
+            "get": {
+                "tags": [
+                    "Bressan"
+                ],
+                "summary": "Lista todos os produtos com paginação",
+                "operationId": "getBressanProducts",
+                "responses": {
+                    "200": {
+                        "description": "Lista de produtos com paginação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Produto Bressan"
+                                                    },
+                                                    "price": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 29.99
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "https://exemplo.com/imagem.jpg"
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "example": "eletrônicos"
+                                                    },
+                                                    "is_highlighted": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-08-21T00:00:00.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-08-21T00:00:00.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 50
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 5
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bressan"
+                ],
+                "summary": "Cria um novo produto",
+                "operationId": "createBressanProduct",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "price",
+                                    "image",
+                                    "type"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Produto Bressan"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 29.99
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "https://exemplo.com/imagem.jpg"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "eletrônicos"
+                                    },
+                                    "is_highlighted": {
+                                        "type": "boolean",
+                                        "example": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "product": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Produto Bressan"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 29.99
+                                                },
+                                                "image": {
+                                                    "type": "string",
+                                                    "example": "https://exemplo.com/imagem.jpg"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "eletrônicos"
+                                                },
+                                                "is_highlighted": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/bressan/products/{id}": {
+            "get": {
+                "tags": [
+                    "Bressan"
+                ],
+                "summary": "Busca um produto específico pelo ID",
+                "operationId": "getBressanProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "product": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Produto Bressan"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 29.99
+                                                },
+                                                "image": {
+                                                    "type": "string",
+                                                    "example": "https://exemplo.com/imagem.jpg"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "eletrônicos"
+                                                },
+                                                "is_highlighted": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Produto não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bressan"
+                ],
+                "summary": "Atualiza as informações de um produto existente",
+                "operationId": "updateBressanProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Produto Bressan Atualizado"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 39.99
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "https://exemplo.com/nova-imagem.jpg"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "casa e jardim"
+                                    },
+                                    "is_highlighted": {
+                                        "type": "boolean",
+                                        "example": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "product": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Produto Bressan Atualizado"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 39.99
+                                                },
+                                                "image": {
+                                                    "type": "string",
+                                                    "example": "https://exemplo.com/nova-imagem.jpg"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "casa e jardim"
+                                                },
+                                                "is_highlighted": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Produto não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bressan"
+                ],
+                "summary": "Remove um produto existente",
+                "operationId": "deleteBressanProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deletado com sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Produto não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "api/du/training": {
             "post": {
                 "tags": [
@@ -1744,13 +2189,13 @@
                 }
             }
         },
-        "/api/products": {
+        "/api/romulo/products": {
             "get": {
                 "tags": [
                     "Romulo"
                 ],
                 "summary": "Lista todos os produtos com paginação",
-                "operationId": "a2d327fdd33668b9637f40e8b35d3928",
+                "operationId": "0e1f10f32cc9b34673dfc37dda501d4f",
                 "responses": {
                     "200": {
                         "description": "Lista de produtos paginada",
@@ -1815,7 +2260,7 @@
                     "Romulo"
                 ],
                 "summary": "Cria um novo produto",
-                "operationId": "d006c34baed8855e44cff3a499ad94c4",
+                "operationId": "a71ab1be18f159fb6f75f0cf967bb4d7",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1894,13 +2339,13 @@
                 }
             }
         },
-        "/api/products/{id}": {
+        "/api/romulo/products/{id}": {
             "get": {
                 "tags": [
                     "Romulo"
                 ],
                 "summary": "Busca um produto pelo ID",
-                "operationId": "9588b7125c41c93e6d32875c28a21a64",
+                "operationId": "b26dad4709e61503f824dba4f792bac8",
                 "parameters": [
                     {
                         "name": "id",
@@ -1964,7 +2409,7 @@
                     "Romulo"
                 ],
                 "summary": "Atualiza um produto",
-                "operationId": "f7931a1ef31510957fa855babacfaa27",
+                "operationId": "0e08bbd517951790933f260bbafe1824",
                 "parameters": [
                     {
                         "name": "id",
@@ -2052,7 +2497,7 @@
                     "Romulo"
                 ],
                 "summary": "Deleta um produto",
-                "operationId": "170b51ac6d2e214e4ba788e28b39abb7",
+                "operationId": "98b6961168c725aaa19817db3a05137b",
                 "parameters": [
                     {
                         "name": "id",
@@ -2259,6 +2704,10 @@
         {
             "name": "Artur",
             "description": "Artur"
+        },
+        {
+            "name": "Bressan",
+            "description": "Bressan"
         },
         {
             "name": "Lucas Du",
