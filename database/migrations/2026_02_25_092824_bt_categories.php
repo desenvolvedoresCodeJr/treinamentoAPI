@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $table->id();
-        $table->enum('name', ['SOCIAL', 'ESPORTIVO', 'SMARTWATCH']);
-        $table->timestamps();
+        Schema::create('bt_categories', function (Blueprint $table) {
+            $table->id();
+            $table->enum('name', ['SOCIAL', 'ESPORTIVO', 'SMARTWATCH']);
+            $table->timestamps();
+        });
     }
 
     /**
