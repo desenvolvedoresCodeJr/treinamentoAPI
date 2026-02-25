@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ArturBarberShopController;
 use App\Http\Controllers\Api\ArturProductController;
 use App\Http\Controllers\Api\ArturUserController;
+use App\Http\Controllers\Api\BayletPublicationController;
 use App\Http\Controllers\Api\BressanProductController;
 use App\Http\Controllers\Api\DuTrainingController;
 use App\Http\Controllers\Api\DuUserController;
@@ -68,4 +69,12 @@ Route::prefix('/bressan')->group(function () {
     Route::get('/products/{id}', [BressanProductController::class, 'show']);
     Route::put('/products/{id}', [BressanProductController::class, 'update']);
     Route::delete('/products/{id}', [BressanProductController::class, 'destroy']);
+});
+
+Route::prefix('/baylet')->group(function () {
+    Route::get('/publications', [BayletPublicationController::class, 'index']);
+    Route::post('/publications', [BayletPublicationController::class, 'store']);
+    Route::get('/publications/{id}', [BayletPublicationController::class, 'show']);
+    Route::put('/publications/{id}', [BayletPublicationController::class, 'update']);
+    Route::delete('/publications/{id}', [BayletPublicationController::class, 'destroy']);
 });
