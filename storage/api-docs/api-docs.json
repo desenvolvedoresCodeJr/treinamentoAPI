@@ -3091,6 +3091,327 @@
                 }
             }
         },
+        "api/richard/characters": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Lista personagens com paginação",
+                "operationId": "getRichardCharacters",
+                "responses": {
+                    "200": {
+                        "description": "Lista de personagens",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "characters": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Diluc"
+                                                    },
+                                                    "element": {
+                                                        "type": "string",
+                                                        "example": "Pyro"
+                                                    },
+                                                    "region": {
+                                                        "type": "string",
+                                                        "example": "Mondstadt"
+                                                    },
+                                                    "weapon_type": {
+                                                        "type": "string",
+                                                        "example": "Claymore"
+                                                    },
+                                                    "rarity": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
+                                                    "icon": {
+                                                        "type": "string",
+                                                        "example": "https://example.com/diluc.png"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 20
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 2
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Cria um personagem",
+                "operationId": "createRichardCharacter",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "element",
+                                    "region",
+                                    "weapon_type",
+                                    "rarity",
+                                    "icon"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Diluc"
+                                    },
+                                    "element": {
+                                        "type": "string",
+                                        "example": "Pyro"
+                                    },
+                                    "region": {
+                                        "type": "string",
+                                        "example": "Mondstadt"
+                                    },
+                                    "weapon_type": {
+                                        "type": "string",
+                                        "example": "Claymore"
+                                    },
+                                    "rarity": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "icon": {
+                                        "type": "string",
+                                        "example": "https://example.com/diluc.png"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Personagem criado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "character": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Diluc"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/richard/characters/{id}": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Busca personagem por ID",
+                "operationId": "getRichardCharacter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Personagem encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "character": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Diluc"
+                                                },
+                                                "element": {
+                                                    "type": "string",
+                                                    "example": "Pyro"
+                                                },
+                                                "region": {
+                                                    "type": "string",
+                                                    "example": "Mondstadt"
+                                                },
+                                                "weapon_type": {
+                                                    "type": "string",
+                                                    "example": "Claymore"
+                                                },
+                                                "rarity": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "icon": {
+                                                    "type": "string",
+                                                    "example": "https://example.com/diluc.png"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personagem não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Atualiza um personagem",
+                "operationId": "updateRichardCharacter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Diluc"
+                                    },
+                                    "element": {
+                                        "type": "string",
+                                        "example": "Pyro"
+                                    },
+                                    "region": {
+                                        "type": "string",
+                                        "example": "Mondstadt"
+                                    },
+                                    "weapon_type": {
+                                        "type": "string",
+                                        "example": "Claymore"
+                                    },
+                                    "rarity": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "icon": {
+                                        "type": "string",
+                                        "example": "https://example.com/diluc.png"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Personagem atualizado"
+                    },
+                    "404": {
+                        "description": "Personagem não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Remove um personagem",
+                "operationId": "deleteRichardCharacter",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Personagem deletado"
+                    },
+                    "404": {
+                        "description": "Personagem não encontrado"
+                    }
+                }
+            }
+        },
         "/api/romulo/products": {
             "get": {
                 "tags": [
@@ -3630,6 +3951,10 @@
         {
             "name": "Paulo",
             "description": "Paulo"
+        },
+        {
+            "name": "Richard",
+            "description": "Richard"
         }
     ]
 }

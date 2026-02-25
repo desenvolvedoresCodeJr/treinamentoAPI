@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\DuUserController;
 use App\Http\Controllers\Api\IdentityController;
 use App\Http\Controllers\Api\PauloCreditCardController;
 use App\Http\Controllers\Api\PauloUserController;
+use App\Http\Controllers\Api\RichardCharacterController;
 use App\Http\Controllers\Api\RomuloProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -86,4 +87,12 @@ Route::prefix('/baldutti')->group(function () {
     Route::get('/categories/{id}', [BalduttiCategoryController::class, 'show']);
     Route::put('/categories/{id}', [BalduttiCategoryController::class, 'update']);
     Route::delete('/categories/{id}', [BalduttiCategoryController::class, 'destroy']);
+});
+
+Route::prefix('/richard')->group(function () {
+    Route::get('/characters', [RichardCharacterController::class, 'index']);
+    Route::post('/characters', [RichardCharacterController::class, 'store']);
+    Route::get('/characters/{id}', [RichardCharacterController::class, 'show']);
+    Route::put('/characters/{id}', [RichardCharacterController::class, 'update']);
+    Route::delete('/characters/{id}', [RichardCharacterController::class, 'destroy']);
 });
