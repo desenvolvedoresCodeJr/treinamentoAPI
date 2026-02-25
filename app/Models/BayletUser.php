@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BayletPublication extends Model
+class BayletUser extends Model
 {
     use HasFactory;
 
-    protected $table = 'bt_publications';
+    protected $table = 'bt_users';
 
     protected $fillable = [
         'name',
-        'description',
-        'price',
-        'category_id',
-        'created_by',
-        'status',
+        'email',
+        'password',
+        'role',
     ];
 }

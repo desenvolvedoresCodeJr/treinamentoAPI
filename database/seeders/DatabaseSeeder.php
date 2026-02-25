@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             IdentitySeeder::class,
+            BayletUserSeeder::class,
+            BayletCategorySeeder::class,
+            BayletPublicationSeeder::class,
         ]);
     }
 }
