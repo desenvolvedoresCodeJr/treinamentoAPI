@@ -881,6 +881,457 @@
                 }
             }
         },
+        "api/baldutti/categories": {
+            "get": {
+                "tags": [
+                    "Baldutti"
+                ],
+                "summary": "Lista todas as categorias com paginação",
+                "operationId": "getBalduttiCategories",
+                "responses": {
+                    "200": {
+                        "description": "Lista de categorias com paginação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Fone Bluetooth"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Fone sem fio com cancelamento de ruído"
+                                                    },
+                                                    "price": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 299.9
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "example": "ELETRONICO"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "https://exemplo.com/fone.jpg"
+                                                    },
+                                                    "isFeatured": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-02-25T12:00:00.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-02-25T12:00:00.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 30
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 3
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Baldutti"
+                ],
+                "summary": "Cria uma nova categoria",
+                "operationId": "createBalduttiCategory",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "price",
+                                    "type",
+                                    "image",
+                                    "isFeatured"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Fone Bluetooth"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Fone sem fio com cancelamento de ruído"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 299.9
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "ELETRONICO"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "https://exemplo.com/fone.jpg"
+                                    },
+                                    "isFeatured": {
+                                        "type": "boolean",
+                                        "example": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Categoria criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "category": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Fone Bluetooth"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Fone sem fio com cancelamento de ruído"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 299.9
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "ELETRONICO"
+                                                },
+                                                "image": {
+                                                    "type": "string",
+                                                    "example": "https://exemplo.com/fone.jpg"
+                                                },
+                                                "isFeatured": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/baldutti/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Baldutti"
+                ],
+                "summary": "Busca uma categoria pelo ID",
+                "operationId": "getBalduttiCategory",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da categoria",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categoria encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "category": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Fone Bluetooth"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Fone sem fio com cancelamento de ruído"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 299.9
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "ELETRONICO"
+                                                },
+                                                "image": {
+                                                    "type": "string",
+                                                    "example": "https://exemplo.com/fone.jpg"
+                                                },
+                                                "isFeatured": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2026-02-25T12:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2026-02-25T12:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Categoria não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Baldutti"
+                ],
+                "summary": "Atualiza uma categoria existente",
+                "operationId": "updateBalduttiCategory",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da categoria",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Fone Bluetooth Pro"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Nova versão com bateria estendida"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 399.9
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "example": "ELETRONICO"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "example": "https://exemplo.com/fone-pro.jpg"
+                                    },
+                                    "isFeatured": {
+                                        "type": "boolean",
+                                        "example": false
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Categoria atualizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "category": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Fone Bluetooth Pro"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Nova versão com bateria estendida"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 399.9
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "ELETRONICO"
+                                                },
+                                                "image": {
+                                                    "type": "string",
+                                                    "example": "https://exemplo.com/fone-pro.jpg"
+                                                },
+                                                "isFeatured": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Categoria não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Baldutti"
+                ],
+                "summary": "Remove uma categoria",
+                "operationId": "deleteBalduttiCategory",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da categoria",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categoria deletada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deletado com sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Categoria não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "api/baylet/publications": {
             "get": {
                 "tags": [
@@ -3155,6 +3606,10 @@
         {
             "name": "Artur",
             "description": "Artur"
+        },
+        {
+            "name": "Baldutti",
+            "description": "Baldutti"
         },
         {
             "name": "Baylet",
