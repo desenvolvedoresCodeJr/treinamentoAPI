@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (Schema::hasTable('bi_categories') && ! Schema::hasTable('baldutti_categories')) {
-            Schema::rename('bi_categories', 'baldutti_categories');
+        if (Schema::hasTable('bi_products') && ! Schema::hasTable('baldutti_products')) {
+            Schema::rename('bi_products', 'baldutti_products');
             return;
         }
 
-        if (! Schema::hasTable('baldutti_categories')) {
-            Schema::create('baldutti_categories', function (Blueprint $table) {
+        if (! Schema::hasTable('baldutti_products')) {
+            Schema::create('baldutti_products', function (Blueprint $table) {
                 $table->id();
                 $table->string('title');
                 $table->text('description');
@@ -35,8 +35,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        if (Schema::hasTable('baldutti_categories') && ! Schema::hasTable('bi_categories')) {
-            Schema::rename('baldutti_categories', 'bi_categories');
+        if (Schema::hasTable('baldutti_products') && ! Schema::hasTable('bi_products')) {
+            Schema::rename('baldutti_products', 'bi_products');
         }
     }
 };

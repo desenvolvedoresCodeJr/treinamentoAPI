@@ -5,21 +5,21 @@
         "version": "1.0"
     },
     "paths": {
-        "api/baldutti/categories": {
+        "api/baldutti/products": {
             "get": {
                 "tags": [
                     "Baldutti"
                 ],
-                "summary": "Lista todas as categorias com paginação",
-                "operationId": "getBalduttiCategories",
+                "summary": "Lista todos os produtos com paginação",
+                "operationId": "getBalduttiProducts",
                 "responses": {
                     "200": {
-                        "description": "Lista de categorias com paginação",
+                        "description": "Lista de produtos com paginação",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "categories": {
+                                        "products": {
                                             "type": "array",
                                             "items": {
                                                 "properties": {
@@ -29,11 +29,11 @@
                                                     },
                                                     "title": {
                                                         "type": "string",
-                                                        "example": "Fone Bluetooth"
+                                                        "example": "Shape Maple Profissional 8.0"
                                                     },
                                                     "description": {
                                                         "type": "string",
-                                                        "example": "Fone sem fio com cancelamento de ruído"
+                                                        "example": "Shape de maple com alta resistência para street."
                                                     },
                                                     "price": {
                                                         "type": "number",
@@ -41,12 +41,13 @@
                                                         "example": 299.9
                                                     },
                                                     "type": {
+                                                        "description": "Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.",
                                                         "type": "string",
-                                                        "example": "ELETRONICO"
+                                                        "example": "shape"
                                                     },
                                                     "image": {
                                                         "type": "string",
-                                                        "example": "https://exemplo.com/fone.jpg"
+                                                        "example": "https://exemplo.com/imagens/shape-maple-8-0.jpg"
                                                     },
                                                     "isFeatured": {
                                                         "type": "boolean",
@@ -94,8 +95,8 @@
                 "tags": [
                     "Baldutti"
                 ],
-                "summary": "Cria uma nova categoria",
-                "operationId": "createBalduttiCategory",
+                "summary": "Cria um novo produto",
+                "operationId": "createBalduttiProduct",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -112,11 +113,11 @@
                                 "properties": {
                                     "title": {
                                         "type": "string",
-                                        "example": "Fone Bluetooth"
+                                        "example": "Skate Montado Iniciante"
                                     },
                                     "description": {
                                         "type": "string",
-                                        "example": "Fone sem fio com cancelamento de ruído"
+                                        "example": "Skate montado ideal para quem está começando."
                                     },
                                     "price": {
                                         "type": "number",
@@ -124,12 +125,13 @@
                                         "example": 299.9
                                     },
                                     "type": {
+                                        "description": "Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.",
                                         "type": "string",
-                                        "example": "ELETRONICO"
+                                        "example": "skateMontado"
                                     },
                                     "image": {
                                         "type": "string",
-                                        "example": "https://exemplo.com/fone.jpg"
+                                        "example": "https://exemplo.com/imagens/skate-montado-iniciante.jpg"
                                     },
                                     "isFeatured": {
                                         "type": "boolean",
@@ -143,12 +145,12 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Categoria criada com sucesso",
+                        "description": "Produto criado com sucesso",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "category": {
+                                        "product": {
                                             "properties": {
                                                 "id": {
                                                     "type": "integer",
@@ -156,11 +158,11 @@
                                                 },
                                                 "title": {
                                                     "type": "string",
-                                                    "example": "Fone Bluetooth"
+                                                    "example": "Skate Montado Iniciante"
                                                 },
                                                 "description": {
                                                     "type": "string",
-                                                    "example": "Fone sem fio com cancelamento de ruído"
+                                                    "example": "Skate montado ideal para quem está começando."
                                                 },
                                                 "price": {
                                                     "type": "number",
@@ -168,12 +170,13 @@
                                                     "example": 299.9
                                                 },
                                                 "type": {
+                                                    "description": "Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.",
                                                     "type": "string",
-                                                    "example": "ELETRONICO"
+                                                    "example": "skateMontado"
                                                 },
                                                 "image": {
                                                     "type": "string",
-                                                    "example": "https://exemplo.com/fone.jpg"
+                                                    "example": "https://exemplo.com/imagens/skate-montado-iniciante.jpg"
                                                 },
                                                 "isFeatured": {
                                                     "type": "boolean",
@@ -191,18 +194,18 @@
                 }
             }
         },
-        "api/baldutti/categories/{id}": {
+        "api/baldutti/products/{id}": {
             "get": {
                 "tags": [
                     "Baldutti"
                 ],
-                "summary": "Busca uma categoria pelo ID",
-                "operationId": "getBalduttiCategory",
+                "summary": "Busca um produto pelo ID",
+                "operationId": "getBalduttiProduct",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID da categoria",
+                        "description": "ID do produto",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -211,12 +214,12 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Categoria encontrada",
+                        "description": "Produto encontrado",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "category": {
+                                        "product": {
                                             "properties": {
                                                 "id": {
                                                     "type": "integer",
@@ -224,11 +227,11 @@
                                                 },
                                                 "title": {
                                                     "type": "string",
-                                                    "example": "Fone Bluetooth"
+                                                    "example": "Rodas 53mm 99A"
                                                 },
                                                 "description": {
                                                     "type": "string",
-                                                    "example": "Fone sem fio com cancelamento de ruído"
+                                                    "example": "Jogo de rodas para street com ótima durabilidade."
                                                 },
                                                 "price": {
                                                     "type": "number",
@@ -236,12 +239,13 @@
                                                     "example": 299.9
                                                 },
                                                 "type": {
+                                                    "description": "Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.",
                                                     "type": "string",
-                                                    "example": "ELETRONICO"
+                                                    "example": "rodas"
                                                 },
                                                 "image": {
                                                     "type": "string",
-                                                    "example": "https://exemplo.com/fone.jpg"
+                                                    "example": "https://exemplo.com/imagens/rodas-53mm-99a.jpg"
                                                 },
                                                 "isFeatured": {
                                                     "type": "boolean",
@@ -267,7 +271,7 @@
                         }
                     },
                     "404": {
-                        "description": "Categoria não encontrada",
+                        "description": "Produto não encontrado",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -288,13 +292,13 @@
                 "tags": [
                     "Baldutti"
                 ],
-                "summary": "Atualiza uma categoria existente",
-                "operationId": "updateBalduttiCategory",
+                "summary": "Atualiza um produto existente",
+                "operationId": "updateBalduttiProduct",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID da categoria",
+                        "description": "ID do produto",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -309,11 +313,11 @@
                                 "properties": {
                                     "title": {
                                         "type": "string",
-                                        "example": "Fone Bluetooth Pro"
+                                        "example": "Truck Profissional 139mm"
                                     },
                                     "description": {
                                         "type": "string",
-                                        "example": "Nova versão com bateria estendida"
+                                        "example": "Truck leve e resistente para manobras técnicas."
                                     },
                                     "price": {
                                         "type": "number",
@@ -321,12 +325,13 @@
                                         "example": 399.9
                                     },
                                     "type": {
+                                        "description": "Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.",
                                         "type": "string",
-                                        "example": "ELETRONICO"
+                                        "example": "truck"
                                     },
                                     "image": {
                                         "type": "string",
-                                        "example": "https://exemplo.com/fone-pro.jpg"
+                                        "example": "https://exemplo.com/imagens/truck-139mm.jpg"
                                     },
                                     "isFeatured": {
                                         "type": "boolean",
@@ -340,12 +345,12 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Categoria atualizada com sucesso",
+                        "description": "Produto atualizado com sucesso",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "category": {
+                                        "product": {
                                             "properties": {
                                                 "id": {
                                                     "type": "integer",
@@ -353,11 +358,11 @@
                                                 },
                                                 "title": {
                                                     "type": "string",
-                                                    "example": "Fone Bluetooth Pro"
+                                                    "example": "Truck Profissional 139mm"
                                                 },
                                                 "description": {
                                                     "type": "string",
-                                                    "example": "Nova versão com bateria estendida"
+                                                    "example": "Truck leve e resistente para manobras técnicas."
                                                 },
                                                 "price": {
                                                     "type": "number",
@@ -365,12 +370,13 @@
                                                     "example": 399.9
                                                 },
                                                 "type": {
+                                                    "description": "Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.",
                                                     "type": "string",
-                                                    "example": "ELETRONICO"
+                                                    "example": "truck"
                                                 },
                                                 "image": {
                                                     "type": "string",
-                                                    "example": "https://exemplo.com/fone-pro.jpg"
+                                                    "example": "https://exemplo.com/imagens/truck-139mm.jpg"
                                                 },
                                                 "isFeatured": {
                                                     "type": "boolean",
@@ -386,7 +392,7 @@
                         }
                     },
                     "404": {
-                        "description": "Categoria não encontrada",
+                        "description": "Produto não encontrado",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -407,13 +413,13 @@
                 "tags": [
                     "Baldutti"
                 ],
-                "summary": "Remove uma categoria",
-                "operationId": "deleteBalduttiCategory",
+                "summary": "Remove um produto",
+                "operationId": "deleteBalduttiProduct",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "ID da categoria",
+                        "description": "ID do produto",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -422,7 +428,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Categoria deletada com sucesso",
+                        "description": "Produto deletado com sucesso",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -438,7 +444,7 @@
                         }
                     },
                     "404": {
-                        "description": "Categoria não encontrada",
+                        "description": "Produto não encontrado",
                         "content": {
                             "application/json": {
                                 "schema": {

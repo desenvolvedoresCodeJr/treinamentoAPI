@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\ArturBarberShopController;
 use App\Http\Controllers\Api\ArturProductController;
 use App\Http\Controllers\Api\ArturUserController;
-use App\Http\Controllers\Api\BalduttiCategoryController;
+use App\Http\Controllers\Api\BalduttiProductController;
 use App\Http\Controllers\Api\BayletPublicationController;
 use App\Http\Controllers\Api\BressanProductController;
 use App\Http\Controllers\Api\DuTrainingController;
@@ -31,11 +31,11 @@ Route::prefix('/baylet')->group(function () {
 });
 
 Route::prefix('/baldutti')->group(function () {
-    Route::get('/categories', [BalduttiCategoryController::class, 'index']);
-    Route::post('/categories', [BalduttiCategoryController::class, 'store']);
-    Route::get('/categories/{id}', [BalduttiCategoryController::class, 'show']);
-    Route::put('/categories/{id}', [BalduttiCategoryController::class, 'update']);
-    Route::delete('/categories/{id}', [BalduttiCategoryController::class, 'destroy']);
+    Route::get('/products', [BalduttiProductController::class, 'index']);
+    Route::post('/products', [BalduttiProductController::class, 'store']);
+    Route::get('/products/{id}', [BalduttiProductController::class, 'show']);
+    Route::put('/products/{id}', [BalduttiProductController::class, 'update']);
+    Route::delete('/products/{id}', [BalduttiProductController::class, 'destroy']);
 });
 
 Route::prefix('/richard')->group(function () {

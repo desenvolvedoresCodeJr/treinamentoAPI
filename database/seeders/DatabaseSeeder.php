@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             BayletUserSeeder::class,
             BayletCategorySeeder::class,
             BayletPublicationSeeder::class,
-            BalduttiCategorySeeder::class,
+            BalduttiProductSeeder::class,
         ]);
     }
 }

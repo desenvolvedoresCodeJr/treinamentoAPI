@@ -3,38 +3,38 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\BalduttiCategory;
+use App\Models\BalduttiProduct;
 use Illuminate\Http\Request;
 
-class BalduttiCategoryController extends Controller
+class BalduttiProductController extends Controller
 {
     /**
      * @OA\Tag(
      *     name="Baldutti",
-     *     description="Gerenciamento de categorias Baldutti"
+     *     description="Gerenciamento de produtos Baldutti"
      * )
      */
 
     /**
      * @OA\Get(
-     *     path="api/baldutti/categories",
-     *     operationId="getBalduttiCategories",
+     *     path="api/baldutti/products",
+     *     operationId="getBalduttiProducts",
      *     tags={"Baldutti"},
-     *     summary="Lista todas as categorias com paginação",
+     *     summary="Lista todos os produtos com paginação",
      *
      *     @OA\Response(
      *         response=200,
-     *         description="Lista de categorias com paginação",
+     *         description="Lista de produtos com paginação",
      *
      *         @OA\JsonContent(
-     *             @OA\Property(property="categories", type="array",
+     *             @OA\Property(property="products", type="array",
      *                 @OA\Items(
      *                     @OA\Property(property="id", type="integer", example=1),
-     *                     @OA\Property(property="title", type="string", example="Fone Bluetooth"),
-     *                     @OA\Property(property="description", type="string", example="Fone sem fio com cancelamento de ruído"),
+    *                     @OA\Property(property="title", type="string", example="Shape Maple Profissional 8.0"),
+    *                     @OA\Property(property="description", type="string", example="Shape de maple com alta resistência para street."),
      *                     @OA\Property(property="price", type="number", format="float", example=299.90),
-     *                     @OA\Property(property="type", type="string", example="ELETRONICO"),
-     *                     @OA\Property(property="image", type="string", example="https://exemplo.com/fone.jpg"),
+    *                     @OA\Property(property="type", type="string", description="Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.", example="shape"),
+    *                     @OA\Property(property="image", type="string", example="https://exemplo.com/imagens/shape-maple-8-0.jpg"),
      *                     @OA\Property(property="isFeatured", type="boolean", example=true),
      *                     @OA\Property(property="created_at", type="string", format="date-time", example="2026-02-25T12:00:00.000000Z"),
      *                     @OA\Property(property="updated_at", type="string", format="date-time", example="2026-02-25T12:00:00.000000Z")
@@ -50,28 +50,28 @@ class BalduttiCategoryController extends Controller
      */
     public function index()
     {
-        $categories = BalduttiCategory::paginate(10);
+        $products = BalduttiProduct::paginate(10);
 
         return response()->json([
-            'categories' => $categories->items(),
-            'current_page' => $categories->currentPage(),
-            'total' => $categories->total(),
-            'per_page' => $categories->perPage(),
-            'last_page' => $categories->lastPage(),
+            'products' => $products->items(),
+            'current_page' => $products->currentPage(),
+            'total' => $products->total(),
+            'per_page' => $products->perPage(),
+            'last_page' => $products->lastPage(),
         ], 200);
     }
 
     /**
      * @OA\Get(
-     *     path="api/baldutti/categories/{id}",
-     *     operationId="getBalduttiCategory",
+     *     path="api/baldutti/products/{id}",
+     *     operationId="getBalduttiProduct",
      *     tags={"Baldutti"},
-     *     summary="Busca uma categoria pelo ID",
+     *     summary="Busca um produto pelo ID",
      *
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID da categoria",
+     *         description="ID do produto",
      *         required=true,
      *
      *         @OA\Schema(type="integer")
@@ -79,16 +79,16 @@ class BalduttiCategoryController extends Controller
      *
      *     @OA\Response(
      *         response=200,
-     *         description="Categoria encontrada",
+     *         description="Produto encontrado",
      *
      *         @OA\JsonContent(
-     *             @OA\Property(property="category", type="object",
+     *             @OA\Property(property="product", type="object",
      *                 @OA\Property(property="id", type="integer", example=1),
-     *                 @OA\Property(property="title", type="string", example="Fone Bluetooth"),
-     *                 @OA\Property(property="description", type="string", example="Fone sem fio com cancelamento de ruído"),
+    *                 @OA\Property(property="title", type="string", example="Rodas 53mm 99A"),
+    *                 @OA\Property(property="description", type="string", example="Jogo de rodas para street com ótima durabilidade."),
      *                 @OA\Property(property="price", type="number", format="float", example=299.90),
-     *                 @OA\Property(property="type", type="string", example="ELETRONICO"),
-     *                 @OA\Property(property="image", type="string", example="https://exemplo.com/fone.jpg"),
+    *                 @OA\Property(property="type", type="string", description="Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.", example="rodas"),
+    *                 @OA\Property(property="image", type="string", example="https://exemplo.com/imagens/rodas-53mm-99a.jpg"),
      *                 @OA\Property(property="isFeatured", type="boolean", example=true),
      *                 @OA\Property(property="created_at", type="string", format="date-time", example="2026-02-25T12:00:00.000000Z"),
      *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2026-02-25T12:00:00.000000Z")
@@ -98,7 +98,7 @@ class BalduttiCategoryController extends Controller
      *
      *     @OA\Response(
      *         response=404,
-     *         description="Categoria não encontrada",
+     *         description="Produto não encontrado",
      *
      *         @OA\JsonContent(
      *             @OA\Property(property="error", type="string", example="not found!")
@@ -108,51 +108,51 @@ class BalduttiCategoryController extends Controller
      */
     public function show(int $id)
     {
-        $category = BalduttiCategory::find($id);
-        if (! $category) {
+        $product = BalduttiProduct::find($id);
+        if (! $product) {
             return response()->json([
                 'error' => 'not found!',
             ], 404);
         }
 
         return response()->json([
-            'category' => $category,
+            'product' => $product,
         ], 200);
     }
 
     /**
      * @OA\Post(
-     *     path="api/baldutti/categories",
-     *     operationId="createBalduttiCategory",
+     *     path="api/baldutti/products",
+     *     operationId="createBalduttiProduct",
      *     tags={"Baldutti"},
-     *     summary="Cria uma nova categoria",
+     *     summary="Cria um novo produto",
      *
      *     @OA\RequestBody(
      *         required=true,
      *
      *         @OA\JsonContent(
      *             required={"title","description","price","type","image","isFeatured"},
-     *             @OA\Property(property="title", type="string", example="Fone Bluetooth"),
-     *             @OA\Property(property="description", type="string", example="Fone sem fio com cancelamento de ruído"),
+    *             @OA\Property(property="title", type="string", example="Skate Montado Iniciante"),
+    *             @OA\Property(property="description", type="string", example="Skate montado ideal para quem está começando."),
      *             @OA\Property(property="price", type="number", format="float", example=299.90),
-     *             @OA\Property(property="type", type="string", example="ELETRONICO"),
-     *             @OA\Property(property="image", type="string", example="https://exemplo.com/fone.jpg"),
+    *             @OA\Property(property="type", type="string", description="Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.", example="skateMontado"),
+    *             @OA\Property(property="image", type="string", example="https://exemplo.com/imagens/skate-montado-iniciante.jpg"),
      *             @OA\Property(property="isFeatured", type="boolean", example=true)
      *         )
      *     ),
      *
      *     @OA\Response(
      *         response=201,
-     *         description="Categoria criada com sucesso",
+     *         description="Produto criado com sucesso",
      *
      *         @OA\JsonContent(
-     *             @OA\Property(property="category", type="object",
+     *             @OA\Property(property="product", type="object",
      *                 @OA\Property(property="id", type="integer", example=1),
-     *                 @OA\Property(property="title", type="string", example="Fone Bluetooth"),
-     *                 @OA\Property(property="description", type="string", example="Fone sem fio com cancelamento de ruído"),
+    *                 @OA\Property(property="title", type="string", example="Skate Montado Iniciante"),
+    *                 @OA\Property(property="description", type="string", example="Skate montado ideal para quem está começando."),
      *                 @OA\Property(property="price", type="number", format="float", example=299.90),
-     *                 @OA\Property(property="type", type="string", example="ELETRONICO"),
-     *                 @OA\Property(property="image", type="string", example="https://exemplo.com/fone.jpg"),
+    *                 @OA\Property(property="type", type="string", description="Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.", example="skateMontado"),
+    *                 @OA\Property(property="image", type="string", example="https://exemplo.com/imagens/skate-montado-iniciante.jpg"),
      *                 @OA\Property(property="isFeatured", type="boolean", example=true)
      *             )
      *         )
@@ -170,24 +170,24 @@ class BalduttiCategoryController extends Controller
             'isFeatured' => 'required|boolean',
         ]);
 
-        $category = BalduttiCategory::create($data);
+        $product = BalduttiProduct::create($data);
 
         return response()->json([
-            'category' => $category,
+            'product' => $product,
         ], 201);
     }
 
     /**
      * @OA\Put(
-     *     path="api/baldutti/categories/{id}",
-     *     operationId="updateBalduttiCategory",
+     *     path="api/baldutti/products/{id}",
+     *     operationId="updateBalduttiProduct",
      *     tags={"Baldutti"},
-     *     summary="Atualiza uma categoria existente",
+     *     summary="Atualiza um produto existente",
      *
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID da categoria",
+     *         description="ID do produto",
      *         required=true,
      *
      *         @OA\Schema(type="integer")
@@ -197,27 +197,27 @@ class BalduttiCategoryController extends Controller
      *         required=true,
      *
      *         @OA\JsonContent(
-     *             @OA\Property(property="title", type="string", example="Fone Bluetooth Pro"),
-     *             @OA\Property(property="description", type="string", example="Nova versão com bateria estendida"),
+    *             @OA\Property(property="title", type="string", example="Truck Profissional 139mm"),
+    *             @OA\Property(property="description", type="string", example="Truck leve e resistente para manobras técnicas."),
      *             @OA\Property(property="price", type="number", format="float", example=399.90),
-     *             @OA\Property(property="type", type="string", example="ELETRONICO"),
-     *             @OA\Property(property="image", type="string", example="https://exemplo.com/fone-pro.jpg"),
+    *             @OA\Property(property="type", type="string", description="Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.", example="truck"),
+    *             @OA\Property(property="image", type="string", example="https://exemplo.com/imagens/truck-139mm.jpg"),
      *             @OA\Property(property="isFeatured", type="boolean", example=false)
      *         )
      *     ),
      *
      *     @OA\Response(
      *         response=200,
-     *         description="Categoria atualizada com sucesso",
+     *         description="Produto atualizado com sucesso",
      *
      *         @OA\JsonContent(
-     *             @OA\Property(property="category", type="object",
+     *             @OA\Property(property="product", type="object",
      *                 @OA\Property(property="id", type="integer", example=1),
-     *                 @OA\Property(property="title", type="string", example="Fone Bluetooth Pro"),
-     *                 @OA\Property(property="description", type="string", example="Nova versão com bateria estendida"),
+    *                 @OA\Property(property="title", type="string", example="Truck Profissional 139mm"),
+    *                 @OA\Property(property="description", type="string", example="Truck leve e resistente para manobras técnicas."),
      *                 @OA\Property(property="price", type="number", format="float", example=399.90),
-     *                 @OA\Property(property="type", type="string", example="ELETRONICO"),
-     *                 @OA\Property(property="image", type="string", example="https://exemplo.com/fone-pro.jpg"),
+    *                 @OA\Property(property="type", type="string", description="Categoria do produto. Exemplos: shape, rodas, skateMontado, truck, lixa, rolamento.", example="truck"),
+    *                 @OA\Property(property="image", type="string", example="https://exemplo.com/imagens/truck-139mm.jpg"),
      *                 @OA\Property(property="isFeatured", type="boolean", example=false)
      *             )
      *         )
@@ -225,7 +225,7 @@ class BalduttiCategoryController extends Controller
      *
      *     @OA\Response(
      *         response=404,
-     *         description="Categoria não encontrada",
+     *         description="Produto não encontrado",
      *
      *         @OA\JsonContent(
      *             @OA\Property(property="error", type="string", example="not found!")
@@ -235,8 +235,8 @@ class BalduttiCategoryController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $category = BalduttiCategory::find($id);
-        if (! $category) {
+        $product = BalduttiProduct::find($id);
+        if (! $product) {
             return response()->json([
                 'error' => 'not found!',
             ], 404);
@@ -251,24 +251,24 @@ class BalduttiCategoryController extends Controller
             'isFeatured' => 'sometimes|boolean',
         ]);
 
-        $category->update($data);
+        $product->update($data);
 
         return response()->json([
-            'category' => $category,
+            'product' => $product,
         ], 200);
     }
 
     /**
      * @OA\Delete(
-     *     path="api/baldutti/categories/{id}",
-     *     operationId="deleteBalduttiCategory",
+     *     path="api/baldutti/products/{id}",
+     *     operationId="deleteBalduttiProduct",
      *     tags={"Baldutti"},
-     *     summary="Remove uma categoria",
+     *     summary="Remove um produto",
      *
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="ID da categoria",
+     *         description="ID do produto",
      *         required=true,
      *
      *         @OA\Schema(type="integer")
@@ -276,7 +276,7 @@ class BalduttiCategoryController extends Controller
      *
      *     @OA\Response(
      *         response=200,
-     *         description="Categoria deletada com sucesso",
+     *         description="Produto deletado com sucesso",
      *
      *         @OA\JsonContent(
      *             @OA\Property(property="message", type="string", example="Deletado com sucesso")
@@ -285,7 +285,7 @@ class BalduttiCategoryController extends Controller
      *
      *     @OA\Response(
      *         response=404,
-     *         description="Categoria não encontrada",
+     *         description="Produto não encontrado",
      *
      *         @OA\JsonContent(
      *             @OA\Property(property="error", type="string", example="not found!")
@@ -295,14 +295,14 @@ class BalduttiCategoryController extends Controller
      */
     public function destroy(int $id)
     {
-        $category = BalduttiCategory::find($id);
-        if (! $category) {
+        $product = BalduttiProduct::find($id);
+        if (! $product) {
             return response()->json([
                 'error' => 'not found!',
             ], 404);
         }
 
-        $category->delete();
+        $product->delete();
 
         return response()->json([
             'message' => 'Deletado com sucesso',

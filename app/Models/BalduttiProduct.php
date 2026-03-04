@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BalduttiCategory extends Model
+class BalduttiProduct extends Model
 {
     use HasFactory;
 
-    protected $table = 'baldutti_categories';
+    protected $table = 'baldutti_products';
 
     protected $fillable = [
         'title',
