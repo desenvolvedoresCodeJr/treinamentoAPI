@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ArturProductController;
 use App\Http\Controllers\Api\ArturUserController;
 use App\Http\Controllers\Api\BalduttiProductController;
 use App\Http\Controllers\Api\BayletPublicationController;
+use App\Http\Controllers\Api\DelioUserController;
 use App\Http\Controllers\Api\BressanProductController;
 use App\Http\Controllers\Api\DuTrainingController;
 use App\Http\Controllers\Api\DuUserController;
@@ -44,4 +45,12 @@ Route::prefix('/richard')->group(function () {
     Route::get('/characters/{id}', [RichardCharacterController::class, 'show']);
     Route::put('/characters/{id}', [RichardCharacterController::class, 'update']);
     Route::delete('/characters/{id}', [RichardCharacterController::class, 'destroy']);
+});
+
+Route::prefix('/delio')->group(function () {
+    Route::get('/users', [DelioUserController::class, 'index']);
+    Route::post('/users', [DelioUserController::class, 'store']);
+    Route::get('/users/{id}', [DelioUserController::class, 'show']);
+    Route::put('/users/{id}', [DelioUserController::class, 'update']);
+    Route::delete('/users/{id}', [DelioUserController::class, 'destroy']);
 });
