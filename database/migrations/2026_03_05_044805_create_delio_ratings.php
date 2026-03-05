@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('delio_ratings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('usuario_id')->constrained('delio_users')->cascadeOnDelete();
+            $table->foreignId('album_id')->constrained('delio_albums')->cascadeOnDelete();
+            $table->float('nota');
             $table->timestamps();
         });
     }

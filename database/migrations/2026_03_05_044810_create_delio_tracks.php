@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('delio_tracks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('album_id')->constrained('delio_albums')->cascadeOnDelete();
+            $table->string('titulo');
+            $table->integer('duracao_em_segundos');
+            $table->text('letra');
         });
     }
 
