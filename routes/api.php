@@ -17,7 +17,10 @@ use App\Http\Controllers\Api\DuUserController;
 use App\Http\Controllers\Api\IdentityController;
 use App\Http\Controllers\Api\PauloCreditCardController;
 use App\Http\Controllers\Api\PauloUserController;
+use App\Http\Controllers\Api\RichardArtifactController;
+use App\Http\Controllers\Api\RichardBuildController;
 use App\Http\Controllers\Api\RichardCharacterController;
+use App\Http\Controllers\Api\RichardWeaponController;
 use App\Http\Controllers\Api\RomuloProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +54,15 @@ Route::prefix('/baldutti')->group(function () {
 });
 
 Route::prefix('/richard')->group(function () {
+    Route::get('/builds', [RichardBuildController::class, 'index']);
+    Route::get('/builds/{id}', [RichardBuildController::class, 'show']);
+
+    Route::get('/weapons', [RichardWeaponController::class, 'index']);
+    Route::get('/weapons/{id}', [RichardWeaponController::class, 'show']);
+
+    Route::get('/artifacts', [RichardArtifactController::class, 'index']);
+    Route::get('/artifacts/{id}', [RichardArtifactController::class, 'show']);
+
     Route::get('/characters', [RichardCharacterController::class, 'index']);
     Route::post('/characters', [RichardCharacterController::class, 'store']);
     Route::get('/characters/{id}', [RichardCharacterController::class, 'show']);
