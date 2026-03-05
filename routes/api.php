@@ -5,6 +5,9 @@ use App\Http\Controllers\Api\ArturProductController;
 use App\Http\Controllers\Api\ArturUserController;
 use App\Http\Controllers\Api\BalduttiProductController;
 use App\Http\Controllers\Api\BayletPublicationController;
+use App\Http\Controllers\Api\DelioAlbumController;
+use App\Http\Controllers\Api\DelioRatingController;
+use App\Http\Controllers\Api\DelioTrackController;
 use App\Http\Controllers\Api\DelioUserController;
 use App\Http\Controllers\Api\BressanProductController;
 use App\Http\Controllers\Api\DuTrainingController;
@@ -53,4 +56,16 @@ Route::prefix('/delio')->group(function () {
     Route::get('/users/{id}', [DelioUserController::class, 'show']);
     Route::put('/users/{id}', [DelioUserController::class, 'update']);
     Route::delete('/users/{id}', [DelioUserController::class, 'destroy']);
+
+    Route::get('/albums', [DelioAlbumController::class, 'index']);
+    Route::get('/albums/{id}', [DelioAlbumController::class, 'show']);
+
+    Route::get('/ratings', [DelioRatingController::class, 'index']);
+    Route::get('/ratings/{id}', [DelioRatingController::class, 'show']);
+
+    Route::get('/tracks', [DelioTrackController::class, 'index']);
+    Route::post('/tracks', [DelioTrackController::class, 'store']);
+    Route::get('/tracks/{id}', [DelioTrackController::class, 'show']);
+    Route::put('/tracks/{id}', [DelioTrackController::class, 'update']);
+    Route::delete('/tracks/{id}', [DelioTrackController::class, 'destroy']);
 });

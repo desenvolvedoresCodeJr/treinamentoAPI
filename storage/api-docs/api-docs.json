@@ -913,6 +913,700 @@
                 }
             }
         },
+        "api/delio/albums": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Lista todos os albums do Delio com paginação",
+                "operationId": "getDelioAlbums",
+                "responses": {
+                    "200": {
+                        "description": "Lista de albums com paginação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "albums": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "titulo": {
+                                                        "type": "string",
+                                                        "example": "Thriller"
+                                                    },
+                                                    "imagem": {
+                                                        "type": "string",
+                                                        "example": "https://dummyimage.com/600x600/111827/f9fafb.png&text=Thriller"
+                                                    },
+                                                    "artista": {
+                                                        "type": "string",
+                                                        "example": "Michael Jackson"
+                                                    },
+                                                    "genero": {
+                                                        "type": "string",
+                                                        "example": "Pop"
+                                                    },
+                                                    "duracao_em_segundos": {
+                                                        "type": "integer",
+                                                        "example": 2580
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 4.9
+                                                    },
+                                                    "is_in_carrossel": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 8
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/albums/{id}": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Busca um album do Delio pelo ID",
+                "operationId": "getDelioAlbum",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Album encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "album": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "titulo": {
+                                                    "type": "string",
+                                                    "example": "Thriller"
+                                                },
+                                                "imagem": {
+                                                    "type": "string",
+                                                    "example": "https://dummyimage.com/600x600/111827/f9fafb.png&text=Thriller"
+                                                },
+                                                "artista": {
+                                                    "type": "string",
+                                                    "example": "Michael Jackson"
+                                                },
+                                                "genero": {
+                                                    "type": "string",
+                                                    "example": "Pop"
+                                                },
+                                                "duracao_em_segundos": {
+                                                    "type": "integer",
+                                                    "example": 2580
+                                                },
+                                                "nota": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 4.9
+                                                },
+                                                "is_in_carrossel": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Album não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/ratings": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Lista todas as avaliações do Delio com paginação",
+                "operationId": "getDelioRatings",
+                "responses": {
+                    "200": {
+                        "description": "Lista de avaliações com paginação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "ratings": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "usuario_id": {
+                                                        "type": "integer",
+                                                        "example": 3
+                                                    },
+                                                    "album_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 4.5
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-03-05T10:00:00.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-03-05T10:00:00.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 40
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 4
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/ratings/{id}": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Busca uma avaliação do Delio pelo ID",
+                "operationId": "getDelioRating",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Avaliação encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rating": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "usuario_id": {
+                                                    "type": "integer",
+                                                    "example": 3
+                                                },
+                                                "album_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "nota": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 4.5
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Avaliação não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/tracks": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Lista todas as tracks do Delio com paginação",
+                "operationId": "getDelioTracks",
+                "responses": {
+                    "200": {
+                        "description": "Lista de tracks com paginação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "tracks": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "album_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "titulo": {
+                                                        "type": "string",
+                                                        "example": "Billie Jean"
+                                                    },
+                                                    "duracao_em_segundos": {
+                                                        "type": "integer",
+                                                        "example": 294
+                                                    },
+                                                    "letra": {
+                                                        "type": "string",
+                                                        "example": "Lorem ipsum dolor sit amet."
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-03-05T10:00:00.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-03-05T10:00:00.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 24
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 3
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Cria uma nova track do Delio",
+                "operationId": "createDelioTrack",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "album_id",
+                                    "titulo",
+                                    "duracao_em_segundos",
+                                    "letra"
+                                ],
+                                "properties": {
+                                    "album_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "titulo": {
+                                        "type": "string",
+                                        "example": "Beat It"
+                                    },
+                                    "duracao_em_segundos": {
+                                        "type": "integer",
+                                        "example": 258
+                                    },
+                                    "letra": {
+                                        "type": "string",
+                                        "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Track criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "track": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "album_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "titulo": {
+                                                    "type": "string",
+                                                    "example": "Beat It"
+                                                },
+                                                "duracao_em_segundos": {
+                                                    "type": "integer",
+                                                    "example": 258
+                                                },
+                                                "letra": {
+                                                    "type": "string",
+                                                    "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/tracks/{id}": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Busca uma track do Delio pelo ID",
+                "operationId": "getDelioTrack",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Track encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "track": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "album_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "titulo": {
+                                                    "type": "string",
+                                                    "example": "Billie Jean"
+                                                },
+                                                "duracao_em_segundos": {
+                                                    "type": "integer",
+                                                    "example": 294
+                                                },
+                                                "letra": {
+                                                    "type": "string",
+                                                    "example": "Lorem ipsum dolor sit amet."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Track não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Atualiza uma track do Delio",
+                "operationId": "updateDelioTrack",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "album_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "titulo": {
+                                        "type": "string",
+                                        "example": "Billie Jean (Remastered)"
+                                    },
+                                    "duracao_em_segundos": {
+                                        "type": "integer",
+                                        "example": 296
+                                    },
+                                    "letra": {
+                                        "type": "string",
+                                        "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Track atualizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "track": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "album_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "titulo": {
+                                                    "type": "string",
+                                                    "example": "Billie Jean (Remastered)"
+                                                },
+                                                "duracao_em_segundos": {
+                                                    "type": "integer",
+                                                    "example": 296
+                                                },
+                                                "letra": {
+                                                    "type": "string",
+                                                    "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Track não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Remove uma track do Delio",
+                "operationId": "deleteDelioTrack",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Track deletada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Deletado com sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Track não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "api/delio/users": {
             "get": {
                 "tags": [
