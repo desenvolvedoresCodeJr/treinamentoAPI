@@ -13,7 +13,7 @@ class DelioUserController extends Controller
     /**
      * @OA\Tag(
      *     name="Delio",
-     *     description="Gerenciamento de usuários do Delio"
+        *     description="Gerenciamento de usuários"
      * )
      */
 
@@ -22,7 +22,7 @@ class DelioUserController extends Controller
      *     path="api/delio/users",
      *     operationId="getDelioUsers",
      *     tags={"Delio"},
-     *     summary="Lista todos os usuários do Delio com paginação",
+    *     summary="Lista todos os usuários com paginação",
      *
      *     @OA\Response(
      *         response=200,
@@ -64,7 +64,7 @@ class DelioUserController extends Controller
      *     path="api/delio/users/{id}",
      *     operationId="getDelioUser",
      *     tags={"Delio"},
-     *     summary="Busca um usuário do Delio pelo ID",
+    *     summary="Busca um usuário pelo ID",
      *
      *     @OA\Parameter(
      *         name="id",
@@ -120,7 +120,7 @@ class DelioUserController extends Controller
      *     path="api/delio/users",
      *     operationId="createDelioUser",
      *     tags={"Delio"},
-     *     summary="Cria um novo usuário do Delio",
+    *     summary="Cria um novo usuário",
      *
      *     @OA\RequestBody(
      *         required=true,
@@ -174,7 +174,7 @@ class DelioUserController extends Controller
      *     path="api/delio/users/{id}",
      *     operationId="updateDelioUser",
      *     tags={"Delio"},
-     *     summary="Atualiza um usuário do Delio",
+    *     summary="Atualiza um usuário",
      *
      *     @OA\Parameter(
      *         name="id",
@@ -260,7 +260,7 @@ class DelioUserController extends Controller
      *     path="api/delio/users/{id}",
      *     operationId="deleteDelioUser",
      *     tags={"Delio"},
-     *     summary="Remove um usuário do Delio",
+    *     summary="Remove um usuário",
      *
      *     @OA\Parameter(
      *         name="id",

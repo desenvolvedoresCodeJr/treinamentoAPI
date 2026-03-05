@@ -11,7 +11,7 @@ class DelioTrackController extends Controller
     /**
      * @OA\Tag(
      *     name="Delio",
-     *     description="Gerenciamento dos recursos do Delio"
+        *     description="Gerenciamento de recursos"
      * )
      */
 
@@ -20,7 +20,7 @@ class DelioTrackController extends Controller
      *     path="api/delio/tracks",
      *     operationId="getDelioTracks",
      *     tags={"Delio"},
-     *     summary="Lista todas as tracks do Delio com paginação",
+     *     summary="Lista todas as tracks com paginação",
      *
      *     @OA\Response(
      *         response=200,
@@ -64,7 +64,7 @@ class DelioTrackController extends Controller
      *     path="api/delio/tracks/{id}",
      *     operationId="getDelioTrack",
      *     tags={"Delio"},
-     *     summary="Busca uma track do Delio pelo ID",
+     *     summary="Busca uma track pelo ID",
      *
      *     @OA\Parameter(
      *         name="id",
@@ -119,7 +119,7 @@ class DelioTrackController extends Controller
      *     path="api/delio/tracks",
      *     operationId="createDelioTrack",
      *     tags={"Delio"},
-     *     summary="Cria uma nova track do Delio",
+     *     summary="Cria uma nova track",
      *
      *     @OA\RequestBody(
      *         required=true,
@@ -170,7 +170,7 @@ class DelioTrackController extends Controller
      *     path="api/delio/tracks/{id}",
      *     operationId="updateDelioTrack",
      *     tags={"Delio"},
-     *     summary="Atualiza uma track do Delio",
+     *     summary="Atualiza uma track",
      *
      *     @OA\Parameter(
      *         name="id",
@@ -245,7 +245,7 @@ class DelioTrackController extends Controller
      *     path="api/delio/tracks/{id}",
      *     operationId="deleteDelioTrack",
      *     tags={"Delio"},
-     *     summary="Remove uma track do Delio",
+     *     summary="Remove uma track",
      *
      *     @OA\Parameter(
      *         name="id",

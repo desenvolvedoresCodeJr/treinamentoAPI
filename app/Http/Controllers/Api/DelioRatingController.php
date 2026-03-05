@@ -12,7 +12,7 @@ class DelioRatingController extends Controller
      *     path="api/delio/ratings",
      *     operationId="getDelioRatings",
      *     tags={"Delio"},
-     *     summary="Lista todas as avaliações do Delio com paginação",
+    *     summary="Lista todas as avaliações com paginação",
      *
      *     @OA\Response(
      *         response=200,
@@ -55,7 +55,7 @@ class DelioRatingController extends Controller
      *     path="api/delio/ratings/{id}",
      *     operationId="getDelioRating",
      *     tags={"Delio"},
-     *     summary="Busca uma avaliação do Delio pelo ID",
+    *     summary="Busca uma avaliação pelo ID",
      *
      *     @OA\Parameter(
      *         name="id",

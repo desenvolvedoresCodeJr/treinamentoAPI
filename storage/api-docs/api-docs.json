@@ -918,7 +918,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Lista todos os albums do Delio com paginação",
+                "summary": "Lista todos os albums com paginação",
                 "operationId": "getDelioAlbums",
                 "responses": {
                     "200": {
@@ -998,7 +998,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Busca um album do Delio pelo ID",
+                "summary": "Busca um album pelo ID",
                 "operationId": "getDelioAlbum",
                 "parameters": [
                     {
@@ -1085,7 +1085,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Lista todas as avaliações do Delio com paginação",
+                "summary": "Lista todas as avaliações com paginação",
                 "operationId": "getDelioRatings",
                 "responses": {
                     "200": {
@@ -1159,7 +1159,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Busca uma avaliação do Delio pelo ID",
+                "summary": "Busca uma avaliação pelo ID",
                 "operationId": "getDelioRating",
                 "parameters": [
                     {
@@ -1230,7 +1230,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Lista todas as tracks do Delio com paginação",
+                "summary": "Lista todas as tracks com paginação",
                 "operationId": "getDelioTracks",
                 "responses": {
                     "200": {
@@ -1305,7 +1305,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Cria uma nova track do Delio",
+                "summary": "Cria uma nova track",
                 "operationId": "createDelioTrack",
                 "requestBody": {
                     "required": true,
@@ -1387,7 +1387,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Busca uma track do Delio pelo ID",
+                "summary": "Busca uma track pelo ID",
                 "operationId": "getDelioTrack",
                 "parameters": [
                     {
@@ -1459,7 +1459,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Atualiza uma track do Delio",
+                "summary": "Atualiza uma track",
                 "operationId": "updateDelioTrack",
                 "parameters": [
                     {
@@ -1559,7 +1559,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Remove uma track do Delio",
+                "summary": "Remove uma track",
                 "operationId": "deleteDelioTrack",
                 "parameters": [
                     {
@@ -1612,7 +1612,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Lista todos os usuários do Delio com paginação",
+                "summary": "Lista todos os usuários com paginação",
                 "operationId": "getDelioUsers",
                 "responses": {
                     "200": {
@@ -1679,7 +1679,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Cria um novo usuário do Delio",
+                "summary": "Cria um novo usuário",
                 "operationId": "createDelioUser",
                 "requestBody": {
                     "required": true,
@@ -1751,7 +1751,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Busca um usuário do Delio pelo ID",
+                "summary": "Busca um usuário pelo ID",
                 "operationId": "getDelioUser",
                 "parameters": [
                     {
@@ -1826,7 +1826,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Atualiza um usuário do Delio",
+                "summary": "Atualiza um usuário",
                 "operationId": "updateDelioUser",
                 "parameters": [
                     {
@@ -1918,7 +1918,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Remove um usuário do Delio",
+                "summary": "Remove um usuário",
                 "operationId": "deleteDelioUser",
                 "parameters": [
                     {

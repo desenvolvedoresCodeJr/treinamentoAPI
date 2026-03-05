@@ -12,7 +12,7 @@ class DelioAlbumController extends Controller
      *     path="api/delio/albums",
      *     operationId="getDelioAlbums",
      *     tags={"Delio"},
-     *     summary="Lista todos os albums do Delio com paginação",
+    *     summary="Lista todos os albums com paginação",
      *
      *     @OA\Response(
      *         response=200,
@@ -57,7 +57,7 @@ class DelioAlbumController extends Controller
      *     path="api/delio/albums/{id}",
      *     operationId="getDelioAlbum",
      *     tags={"Delio"},
-     *     summary="Busca um album do Delio pelo ID",
+    *     summary="Busca um album pelo ID",
      *
      *     @OA\Parameter(
      *         name="id",
