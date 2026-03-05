@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('delio_albums', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('titulo');
+            $table->string('imagem');
+            $table->string('artista');
+            $table->string('genero');
+            $table->integer('duracao_em_segundos');
+            $table->double('nota');
+            $table->boolean('is_in_carrossel');
         });
     }
 
