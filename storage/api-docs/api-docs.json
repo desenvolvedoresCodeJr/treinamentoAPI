@@ -2277,6 +2277,306 @@
                 }
             }
         },
+        "api/richard/artifacts": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Lista artefatos com paginação",
+                "operationId": "getRichardArtifacts",
+                "responses": {
+                    "200": {
+                        "description": "Lista de artefatos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "artifacts": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Crimson Witch of Flames"
+                                                    },
+                                                    "set_bonus_2": {
+                                                        "type": "string",
+                                                        "example": "Pyro DMG Bonus +15%"
+                                                    },
+                                                    "set_bonus_4": {
+                                                        "type": "string",
+                                                        "example": "Increases Overloaded and Burning DMG"
+                                                    },
+                                                    "main_stats": {
+                                                        "type": "string",
+                                                        "example": "ATK%, Pyro DMG, CRIT"
+                                                    },
+                                                    "type": {
+                                                        "type": "string",
+                                                        "example": "DPS"
+                                                    },
+                                                    "icon": {
+                                                        "type": "string",
+                                                        "example": "https://example.com/artifact.png"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 12
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 2
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/richard/artifacts/{id}": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Busca artefato por ID",
+                "operationId": "getRichardArtifact",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Artefato encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "artifact": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Crimson Witch of Flames"
+                                                },
+                                                "set_bonus_2": {
+                                                    "type": "string",
+                                                    "example": "Pyro DMG Bonus +15%"
+                                                },
+                                                "set_bonus_4": {
+                                                    "type": "string",
+                                                    "example": "Increases Overloaded and Burning DMG"
+                                                },
+                                                "main_stats": {
+                                                    "type": "string",
+                                                    "example": "ATK%, Pyro DMG, CRIT"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "DPS"
+                                                },
+                                                "icon": {
+                                                    "type": "string",
+                                                    "example": "https://example.com/artifact.png"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Artefato não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/richard/builds": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Lista builds com paginação",
+                "operationId": "getRichardBuilds",
+                "responses": {
+                    "200": {
+                        "description": "Lista de builds",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "builds": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "character_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Build DPS Pyro"
+                                                    },
+                                                    "banner_url": {
+                                                        "type": "string",
+                                                        "example": "https://example.com/banner.png"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-02-25T12:00:00.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2026-02-25T12:00:00.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 8
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/richard/builds/{id}": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Busca build por ID",
+                "operationId": "getRichardBuild",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Build encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "build": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "character_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Build DPS Pyro"
+                                                },
+                                                "banner_url": {
+                                                    "type": "string",
+                                                    "example": "https://example.com/banner.png"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Build não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "api/richard/characters": {
             "get": {
                 "tags": [
@@ -2594,6 +2894,155 @@
                     },
                     "404": {
                         "description": "Personagem não encontrado"
+                    }
+                }
+            }
+        },
+        "api/richard/weapons": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Lista armas com paginação",
+                "operationId": "getRichardWeapons",
+                "responses": {
+                    "200": {
+                        "description": "Lista de armas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "weapons": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Wolf's Gravestone"
+                                                    },
+                                                    "weapon_type": {
+                                                        "type": "string",
+                                                        "example": "Claymore"
+                                                    },
+                                                    "weapon_bonus": {
+                                                        "type": "string",
+                                                        "example": "ATK%"
+                                                    },
+                                                    "rarity": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
+                                                    "icon": {
+                                                        "type": "string",
+                                                        "example": "https://example.com/weapon.png"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "current_page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 20
+                                        },
+                                        "per_page": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "last_page": {
+                                            "type": "integer",
+                                            "example": 2
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/richard/weapons/{id}": {
+            "get": {
+                "tags": [
+                    "Richard"
+                ],
+                "summary": "Busca arma por ID",
+                "operationId": "getRichardWeapon",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Arma encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "weapon": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Wolf's Gravestone"
+                                                },
+                                                "weapon_type": {
+                                                    "type": "string",
+                                                    "example": "Claymore"
+                                                },
+                                                "weapon_bonus": {
+                                                    "type": "string",
+                                                    "example": "ATK%"
+                                                },
+                                                "rarity": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "icon": {
+                                                    "type": "string",
+                                                    "example": "https://example.com/weapon.png"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Arma não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
