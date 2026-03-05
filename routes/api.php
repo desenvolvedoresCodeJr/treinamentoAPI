@@ -4,7 +4,9 @@ use App\Http\Controllers\Api\ArturBarberShopController;
 use App\Http\Controllers\Api\ArturProductController;
 use App\Http\Controllers\Api\ArturUserController;
 use App\Http\Controllers\Api\BalduttiProductController;
+use App\Http\Controllers\Api\BayletCategoryController;
 use App\Http\Controllers\Api\BayletPublicationController;
+use App\Http\Controllers\Api\BayletUserController;
 use App\Http\Controllers\Api\DelioAlbumController;
 use App\Http\Controllers\Api\DelioRatingController;
 use App\Http\Controllers\Api\DelioTrackController;
@@ -27,6 +29,12 @@ Route::get('/user', function (Request $request) {
 Route::get('/identities', [IdentityController::class, 'index']);
 
 Route::prefix('/baylet')->group(function () {
+    Route::get('/users', [BayletUserController::class, 'index']);
+    Route::get('/users/{id}', [BayletUserController::class, 'show']);
+
+    Route::get('/categories', [BayletCategoryController::class, 'index']);
+    Route::get('/categories/{id}', [BayletCategoryController::class, 'show']);
+
     Route::get('/publications', [BayletPublicationController::class, 'index']);
     Route::post('/publications', [BayletPublicationController::class, 'store']);
     Route::get('/publications/{id}', [BayletPublicationController::class, 'show']);
