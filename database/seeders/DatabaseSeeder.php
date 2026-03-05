@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             BayletCategorySeeder::class,
             BayletPublicationSeeder::class,
             BalduttiProductSeeder::class,
+            DelioUserSeeder::class,
+            DelioAlbumSeeder::class,
+            DelioTrackSeeder::class,
+            DelioRatingSeeder::class,
         ]);
     }
 }
