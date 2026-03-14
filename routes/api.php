@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\RichardBuildController;
 use App\Http\Controllers\Api\RichardCharacterController;
 use App\Http\Controllers\Api\RichardWeaponController;
 use App\Http\Controllers\Api\RomuloProductController;
+use App\Http\Controllers\DelioAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -71,16 +72,27 @@ Route::prefix('/richard')->group(function () {
 });
 
 Route::prefix('/delio')->group(function () {
+    Route::post('/login', [DelioAuthController::class, 'login']);
+
     Route::get('/users', [DelioUserController::class, 'index']);
     Route::post('/users', [DelioUserController::class, 'store']);
+    Route::get('/users/{id}/ratings', [DelioUserController::class, 'ratings']);
     Route::get('/users/{id}', [DelioUserController::class, 'show']);
     Route::put('/users/{id}', [DelioUserController::class, 'update']);
     Route::delete('/users/{id}', [DelioUserController::class, 'destroy']);
 
     Route::get('/albums', [DelioAlbumController::class, 'index']);
+    Route::post('/albums', [DelioAlbumController::class, 'store']);
+    Route::get('/albums/all', [DelioAlbumController::class, 'showByUser']);
+    Route::get('/albums/latest', [DelioAlbumController::class, 'latest']);
+    Route::get('/albums/top-rated', [DelioAlbumController::class, 'topRated']);
+    Route::get('/albums/carousel', [DelioAlbumController::class, 'carousel']);
     Route::get('/albums/{id}', [DelioAlbumController::class, 'show']);
 
     Route::get('/ratings', [DelioRatingController::class, 'index']);
+    Route::get('/ratings/album/{albumId}', [DelioRatingController::class, 'getRatingsByAlbum']);
+    Route::get('/ratings/album/{albumId}/user/{userId}', [DelioRatingController::class, 'getRatingsByAlbumAndUser']);
+    Route::get('/ratings/user/{userId}', [DelioRatingController::class, 'getRatingsByUser']);
     Route::get('/ratings/{id}', [DelioRatingController::class, 'show']);
 
     Route::get('/tracks', [DelioTrackController::class, 'index']);

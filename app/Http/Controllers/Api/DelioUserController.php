@@ -116,6 +116,72 @@ class DelioUserController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *     path="api/delio/users/{id}/ratings",
+     *     operationId="getDelioUserRatings",
+     *     tags={"Delio"},
+     *     summary="Retorna o nome do usuario e as avaliacoes dele",
+     *
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID do usuario",
+     *         required=true,
+     *
+     *         @OA\Schema(type="integer")
+     *     ),
+     *
+     *     @OA\Response(
+     *         response=200,
+     *         description="Usuario e avaliacoes retornados com sucesso",
+     *
+     *         @OA\JsonContent(
+     *             @OA\Property(property="user", type="object",
+     *                 @OA\Property(property="id", type="integer", example=1),
+     *                 @OA\Property(property="name", type="string", example="Vinicius")
+     *             ),
+     *             @OA\Property(property="ratings", type="array",
+     *                 @OA\Items(
+     *                     @OA\Property(property="id", type="integer", example=1),
+     *                     @OA\Property(property="album_id", type="integer", example=2),
+     *                     @OA\Property(property="nota", type="number", format="float", example=4.5)
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *
+     *     @OA\Response(
+     *         response=404,
+     *         description="Usuario nao encontrado",
+     *
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="not found!")
+     *         )
+     *     )
+     * )
+     */
+    public function ratings(int $id)
+    {
+        $user = DelioUser::query()
+            ->select('id', 'name')
+            ->with(['ratings' => function ($query) {
+                $query->orderByDesc('created_at');
+            }])
+            ->find($id);
+
+        if (! $user) {
+            return response()->json([
+                'error' => 'not found!',
+            ], 404);
+        }
+
+        return response()->json([
+            'user' => $user,
+            'ratings' => $user->ratings,
+        ], 200);
+    }
+
+    /**
      * @OA\Post(
      *     path="api/delio/users",
      *     operationId="createDelioUser",

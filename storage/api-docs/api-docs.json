@@ -1190,11 +1190,11 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Lista todos os albums com paginação",
+                "summary": "Lista todos os albums com paginacao",
                 "operationId": "getDelioAlbums",
                 "responses": {
                     "200": {
-                        "description": "Lista de albums com paginação",
+                        "description": "Lista de albums com paginacao",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1261,6 +1261,122 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Cria um novo album",
+                "operationId": "createDelioAlbum",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "titulo",
+                                    "imagem",
+                                    "artista",
+                                    "genero",
+                                    "duracao_em_segundos",
+                                    "nota",
+                                    "is_in_carrossel"
+                                ],
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string",
+                                        "example": "Hybrid Theory"
+                                    },
+                                    "imagem": {
+                                        "type": "string",
+                                        "example": "https://example.com/hybrid-theory.jpg"
+                                    },
+                                    "artista": {
+                                        "type": "string",
+                                        "example": "Linkin Park"
+                                    },
+                                    "genero": {
+                                        "type": "string",
+                                        "example": "Nu Metal"
+                                    },
+                                    "duracao_em_segundos": {
+                                        "type": "integer",
+                                        "example": 2237
+                                    },
+                                    "nota": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 4.8
+                                    },
+                                    "is_in_carrossel": {
+                                        "type": "boolean",
+                                        "example": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Album criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "album": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "titulo": {
+                                                    "type": "string",
+                                                    "example": "Hybrid Theory"
+                                                },
+                                                "imagem": {
+                                                    "type": "string",
+                                                    "example": "https://example.com/hybrid-theory.jpg"
+                                                },
+                                                "artista": {
+                                                    "type": "string",
+                                                    "example": "Linkin Park"
+                                                },
+                                                "genero": {
+                                                    "type": "string",
+                                                    "example": "Nu Metal"
+                                                },
+                                                "duracao_em_segundos": {
+                                                    "type": "integer",
+                                                    "example": 2237
+                                                },
+                                                "nota": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 4.8
+                                                },
+                                                "is_in_carrossel": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Album criado com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erro de validacao"
                     }
                 }
             }
@@ -1334,7 +1450,7 @@
                         }
                     },
                     "404": {
-                        "description": "Album não encontrado",
+                        "description": "Album nao encontrado",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1352,16 +1468,210 @@
                 }
             }
         },
+        "api/delio/albums/latest": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Retorna os albums mais recentes",
+                "operationId": "getLatestDelioAlbums",
+                "responses": {
+                    "200": {
+                        "description": "Albums mais recentes retornados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "albums": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "titulo": {
+                                                        "type": "string",
+                                                        "example": "New Album"
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 4.7
+                                                    },
+                                                    "is_in_carrossel": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Albums mais recentes retornados com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/albums/top-rated": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Retorna os albums mais bem avaliados",
+                "operationId": "getTopRatedDelioAlbums",
+                "responses": {
+                    "200": {
+                        "description": "Albums mais bem avaliados retornados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "albums": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "titulo": {
+                                                        "type": "string",
+                                                        "example": "Mid Album"
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 5
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Albums mais bem avaliados retornados com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/albums/carousel": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Retorna os albums do carrossel",
+                "operationId": "getCarouselDelioAlbums",
+                "responses": {
+                    "200": {
+                        "description": "Albums do carrossel retornados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "albums": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "titulo": {
+                                                        "type": "string",
+                                                        "example": "Mid Album"
+                                                    },
+                                                    "is_in_carrossel": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Albums do carrossel retornados com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/albums/all": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Lista todos os albums sem paginacao",
+                "operationId": "getAllDelioAlbums",
+                "responses": {
+                    "200": {
+                        "description": "Todos os albums retornados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "albums": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "titulo": {
+                                                        "type": "string",
+                                                        "example": "Thriller"
+                                                    },
+                                                    "artista": {
+                                                        "type": "string",
+                                                        "example": "Michael Jackson"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Albums retornados com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "api/delio/ratings": {
             "get": {
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Lista todas as avaliações com paginação",
+                "summary": "Lista todas as avaliacoes com paginacao",
                 "operationId": "getDelioRatings",
                 "responses": {
                     "200": {
-                        "description": "Lista de avaliações com paginação",
+                        "description": "Lista de avaliacoes com paginacao",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1431,7 +1741,7 @@
                 "tags": [
                     "Delio"
                 ],
-                "summary": "Busca uma avaliação pelo ID",
+                "summary": "Busca uma avaliacao pelo ID",
                 "operationId": "getDelioRating",
                 "parameters": [
                     {
@@ -1445,7 +1755,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Avaliação encontrada",
+                        "description": "Avaliacao encontrada",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1479,7 +1789,7 @@
                         }
                     },
                     "404": {
-                        "description": "Avaliação não encontrada",
+                        "description": "Avaliacao nao encontrada",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1487,6 +1797,200 @@
                                         "error": {
                                             "type": "string",
                                             "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/ratings/album/{albumId}": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Retorna as avaliacoes de um album",
+                "operationId": "getDelioRatingsByAlbum",
+                "parameters": [
+                    {
+                        "name": "albumId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Avaliacoes retornadas com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "ratings": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "usuario_id": {
+                                                        "type": "integer",
+                                                        "example": 3
+                                                    },
+                                                    "album_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 4.5
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Avaliacoes retornadas com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/ratings/user/{userId}": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Retorna as avaliacoes de um usuario",
+                "operationId": "getDelioRatingsByUser",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Avaliacoes retornadas com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "ratings": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "usuario_id": {
+                                                        "type": "integer",
+                                                        "example": 3
+                                                    },
+                                                    "album_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 4.5
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Avaliacoes retornadas com sucesso!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/ratings/album/{albumId}/user/{userId}": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Retorna as avaliacoes de um album feitas por um usuario",
+                "operationId": "getDelioRatingsByAlbumAndUser",
+                "parameters": [
+                    {
+                        "name": "albumId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Avaliacoes retornadas com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "ratings": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "usuario_id": {
+                                                        "type": "integer",
+                                                        "example": 3
+                                                    },
+                                                    "album_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 4.5
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Avaliacoes retornadas com sucesso!"
                                         }
                                     },
                                     "type": "object"
@@ -2222,6 +2726,90 @@
                     },
                     "404": {
                         "description": "Usuário não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "not found!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/delio/users/{id}/ratings": {
+            "get": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Retorna o nome do usuario e as avaliacoes dele",
+                "operationId": "getDelioUserRatings",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario e avaliacoes retornados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Vinicius"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "ratings": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "album_id": {
+                                                        "type": "integer",
+                                                        "example": 2
+                                                    },
+                                                    "nota": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 4.5
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuario nao encontrado",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -3043,6 +3631,94 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "api/delio/login": {
+            "post": {
+                "tags": [
+                    "Delio"
+                ],
+                "summary": "Realiza login de um usuario Delio",
+                "operationId": "loginDelioUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "ana.delio@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "secret123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login realizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Login realizado com sucesso!"
+                                        },
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Ana Souza"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "ana.delio@example.com"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Credenciais invalidas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Credenciais invalidas."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erro de validacao"
                     }
                 }
             }
