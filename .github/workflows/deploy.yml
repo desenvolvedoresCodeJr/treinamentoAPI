@@ -1,0 +1,144 @@
+name: Deploy Automático
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_PATH: public_html/treinamentoapi
+  DEPLOY_BRANCH: main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build Vite assets
+        run: |
+          npm install
+          npm run build
+
+      - name: Pull code + Composer + Migrate (server)
+        continue-on-error: true
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+
+            PROJECT_PATH="${{ env.PROJECT_PATH }}"
+            BRANCH="${{ env.DEPLOY_BRANCH }}"
+            PHP_BIN=""
+            COMPOSER_BIN=""
+
+            if [ ! -d "$PROJECT_PATH" ]; then
+              echo "Project path not found at $PROJECT_PATH"
+              exit 1
+            fi
+
+            for CANDIDATE in /opt/cpanel/ea-php84/root/usr/bin/php /opt/cpanel/ea-php83/root/usr/bin/php "$(command -v php 2>/dev/null)"; do
+              if [ -n "$CANDIDATE" ] && [ -x "$CANDIDATE" ] && "$CANDIDATE" -r 'exit(version_compare(PHP_VERSION, "8.2.0", ">=") ? 0 : 1);'; then
+                PHP_BIN="$CANDIDATE"
+                break
+              fi
+            done
+
+            if [ -z "$PHP_BIN" ]; then
+              echo "No PHP CLI binary compatible with >= 8.2.0 was found."
+              exit 1
+            fi
+
+            if [ -x /usr/local/bin/composer ]; then
+              COMPOSER_BIN="/usr/local/bin/composer"
+            elif command -v composer >/dev/null 2>&1; then
+              COMPOSER_BIN="$(command -v composer)"
+            else
+              echo "Composer binary not found."
+              exit 1
+            fi
+
+            cd "$PROJECT_PATH"
+
+            if [ -f ~/.ssh/github_actions ]; then
+              GIT_SSH_COMMAND="ssh -i ~/.ssh/github_actions -o IdentitiesOnly=yes -o StrictHostKeyChecking=no" git fetch origin "$BRANCH"
+            else
+              git fetch origin "$BRANCH"
+            fi
+            git reset --hard origin/"$BRANCH"
+
+            rm -f public/hot
+            rm -f bootstrap/cache/packages.php bootstrap/cache/services.php
+
+            if [ ! -d "vendor" ] || git diff HEAD~1 HEAD --name-only | grep -qE 'composer\.(lock|json)'; then
+              echo "composer.lock/json changed or vendor missing — running composer install"
+              "$PHP_BIN" "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction
+            else
+              echo "composer.lock/json unchanged — running dump-autoload only"
+              "$PHP_BIN" "$COMPOSER_BIN" dump-autoload --optimize --no-dev
+            fi
+
+            "$PHP_BIN" artisan storage:link --force --no-interaction
+
+            "$PHP_BIN" artisan migrate --force --no-interaction
+
+      - name: Upload public/build
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          port: 21
+          protocol: ftps
+          local-dir: public/build/
+          server-dir: ${{ env.PROJECT_PATH }}/public/build/
+          dangerous-clean-slate: true
+
+      - name: Cache Laravel (server)
+        continue-on-error: true
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+
+            PROJECT_PATH="${{ env.PROJECT_PATH }}"
+            PHP_BIN=""
+
+            for CANDIDATE in /opt/cpanel/ea-php84/root/usr/bin/php /opt/cpanel/ea-php83/root/usr/bin/php "$(command -v php 2>/dev/null)"; do
+              if [ -n "$CANDIDATE" ] && [ -x "$CANDIDATE" ] && "$CANDIDATE" -r 'exit(version_compare(PHP_VERSION, "8.2.0", ">=") ? 0 : 1);'; then
+                PHP_BIN="$CANDIDATE"
+                break
+              fi
+            done
+
+            if [ -z "$PHP_BIN" ]; then
+              echo "No PHP CLI binary compatible with >= 8.2.0 was found."
+              exit 1
+            fi
+
+            cd "$PROJECT_PATH"
+
+            rm -f public/hot
+            "$PHP_BIN" artisan optimize:clear
+            "$PHP_BIN" artisan config:cache
+            "$PHP_BIN" artisan route:cache
+            "$PHP_BIN" artisan view:cache
+            
+            # Reinicia a fila (queue worker) para carregar o novo código
+            "$PHP_BIN" artisan queue:restart || true
