@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  PROJECT_PATH: public_html/treinamentoapi
+  PROJECT_PATH: public_html/treinamento-api
   DEPLOY_BRANCH: main
 
 jobs:
