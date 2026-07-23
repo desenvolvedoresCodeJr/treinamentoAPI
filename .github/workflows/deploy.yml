@@ -82,13 +82,8 @@ jobs:
             rm -f public/hot
             rm -f bootstrap/cache/packages.php bootstrap/cache/services.php
 
-            if [ ! -d "vendor" ] || git diff HEAD~1 HEAD --name-only | grep -qE 'composer\.(lock|json)'; then
-              echo "composer.lock/json changed or vendor missing — running composer install"
-              "$PHP_BIN" "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction
-            else
-              echo "composer.lock/json unchanged — running dump-autoload only"
-              "$PHP_BIN" "$COMPOSER_BIN" dump-autoload --optimize --no-dev
-            fi
+            echo "Running composer install"
+            "$PHP_BIN" "$COMPOSER_BIN" install --no-dev --optimize-autoloader --no-interaction
 
             "$PHP_BIN" artisan storage:link --force --no-interaction
 
