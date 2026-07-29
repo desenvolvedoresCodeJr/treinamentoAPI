@@ -134,6 +134,7 @@ jobs:
             "$PHP_BIN" artisan config:cache
             "$PHP_BIN" artisan route:cache
             "$PHP_BIN" artisan view:cache
+            "$PHP_BIN" artisan l5-swagger:generate
             
             # Reinicia a fila (queue worker) para carregar o novo código
             "$PHP_BIN" artisan queue:restart || true

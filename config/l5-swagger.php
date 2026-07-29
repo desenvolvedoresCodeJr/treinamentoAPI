@@ -139,7 +139,21 @@ return [
              * @note This option overwrites `paths.excludes`
              * @see \OpenApi\scan
             */
-            'exclude' => [],
+            'exclude' => [
+                base_path('app/Http/Controllers/Api/BalduttiProductController.php'),
+                base_path('app/Http/Controllers/Api/BayletCategoryController.php'),
+                base_path('app/Http/Controllers/Api/BayletPublicationController.php'),
+                base_path('app/Http/Controllers/Api/BayletUserController.php'),
+                base_path('app/Http/Controllers/Api/DelioAlbumController.php'),
+                base_path('app/Http/Controllers/Api/DelioRatingController.php'),
+                base_path('app/Http/Controllers/Api/DelioTrackController.php'),
+                base_path('app/Http/Controllers/Api/DelioUserController.php'),
+                base_path('app/Http/Controllers/Api/RichardArtifactController.php'),
+                base_path('app/Http/Controllers/Api/RichardBuildController.php'),
+                base_path('app/Http/Controllers/Api/RichardCharacterController.php'),
+                base_path('app/Http/Controllers/Api/RichardWeaponController.php'),
+                base_path('app/Http/Controllers/DelioAuthController.php'),
+            ],
 
             /*
              * Allows to generate specs either for OpenAPI 3.0.0 or OpenAPI 3.1.0.
