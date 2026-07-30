@@ -30,7 +30,14 @@ class AuthController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="status", type="integer", example=201),
      *             @OA\Property(property="message", type="string", example="User created successfully"),
-     *             @OA\Property(property="user", type="object"),
+     *             @OA\Property(property="user", type="object",
+     *                 @OA\Property(property="id", type="integer", example=1),
+     *                 @OA\Property(property="name", type="string", example="John Doe"),
+     *                 @OA\Property(property="email", type="string", example="john@example.com"),
+     *                 @OA\Property(property="email_verified_at", type="string", format="date-time", example=null),
+     *                 @OA\Property(property="created_at", type="string", format="date-time", example="2023-10-01T12:00:00.000000Z"),
+     *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2023-10-01T12:00:00.000000Z")
+     *             ),
      *             @OA\Property(property="token", type="string")
      *         )
      *     ),
@@ -80,7 +87,14 @@ class AuthController extends Controller
      *         @OA\JsonContent(
      *             @OA\Property(property="status", type="integer", example=200),
      *             @OA\Property(property="message", type="string", example="Login successful"),
-     *             @OA\Property(property="user", type="object"),
+     *             @OA\Property(property="user", type="object",
+     *                 @OA\Property(property="id", type="integer", example=1),
+     *                 @OA\Property(property="name", type="string", example="John Doe"),
+     *                 @OA\Property(property="email", type="string", example="john@example.com"),
+     *                 @OA\Property(property="email_verified_at", type="string", format="date-time", example=null),
+     *                 @OA\Property(property="created_at", type="string", format="date-time", example="2023-10-01T12:00:00.000000Z"),
+     *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2023-10-01T12:00:00.000000Z")
+     *             ),
      *             @OA\Property(property="token", type="string")
      *         )
      *     ),
@@ -124,7 +138,14 @@ class AuthController extends Controller
      *         description="Successful operation",
      *         @OA\JsonContent(
      *             @OA\Property(property="status", type="integer", example=200),
-     *             @OA\Property(property="user", type="object")
+     *             @OA\Property(property="user", type="object",
+     *                 @OA\Property(property="id", type="integer", example=1),
+     *                 @OA\Property(property="name", type="string", example="John Doe"),
+     *                 @OA\Property(property="email", type="string", example="john@example.com"),
+     *                 @OA\Property(property="email_verified_at", type="string", format="date-time", example=null),
+     *                 @OA\Property(property="created_at", type="string", format="date-time", example="2023-10-01T12:00:00.000000Z"),
+     *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2023-10-01T12:00:00.000000Z")
+     *             )
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthenticated")
