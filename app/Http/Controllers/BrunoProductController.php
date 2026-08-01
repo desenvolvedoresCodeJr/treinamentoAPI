@@ -8,59 +8,98 @@ use App\Models\BrunoProduct;
 
 class BrunoProductController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/bruno/products",
+     *     tags={"Bruno Products"},
+     *     summary="List all BrunoProducts",
+     *     @OA\Response(response=200, description="Successful operation")
+     * )
      */
     public function index()
     {
-        //
+        return \App\Models\BrunoProduct::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @OA\Post(
+     *     path="/api/bruno/products",
+     *     tags={"Bruno Products"},
+     *     summary="Create a new BrunoProduct",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="description", type="string"),
+     *             @OA\Property(property="price", type="string"),
+     *             @OA\Property(property="image_url", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Created")
+     * )
      */
-    public function create()
+    public function store(\App\Http\Requests\StoreBrunoProductRequest $request)
     {
-        //
+        return \App\Models\BrunoProduct::create($request->all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Get(
+     *     path="/api/bruno/products/{id}",
+     *     tags={"Bruno Products"},
+     *     summary="Get BrunoProduct by ID",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function store(StoreBrunoProductRequest $request)
+    public function show($id)
     {
-        //
+        return \App\Models\BrunoProduct::findOrFail($id);
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Put(
+     *     path="/api/bruno/products/{id}",
+     *     tags={"Bruno Products"},
+     *     summary="Update a BrunoProduct",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="description", type="string"),
+     *             @OA\Property(property="price", type="string"),
+     *             @OA\Property(property="image_url", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Updated successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function show(BrunoProduct $brunoProduct)
+    public function update(\App\Http\Requests\UpdateBrunoProductRequest $request, $id)
     {
-        //
+        $item = \App\Models\BrunoProduct::findOrFail($id);
+        $item->update($request->all());
+        return $item;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @OA\Delete(
+     *     path="/api/bruno/products/{id}",
+     *     tags={"Bruno Products"},
+     *     summary="Delete a BrunoProduct",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=204, description="Deleted successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function edit(BrunoProduct $brunoProduct)
+    public function destroy($id)
     {
-        //
+        $item = \App\Models\BrunoProduct::findOrFail($id);
+        $item->delete();
+        return response()->json(null, 204);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateBrunoProductRequest $request, BrunoProduct $brunoProduct)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(BrunoProduct $brunoProduct)
-    {
-        //
-    }
 }

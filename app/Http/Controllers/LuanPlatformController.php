@@ -8,59 +8,94 @@ use App\Models\LuanPlatform;
 
 class LuanPlatformController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/luan/platforms",
+     *     tags={"Luan Platforms"},
+     *     summary="List all LuanPlatforms",
+     *     @OA\Response(response=200, description="Successful operation")
+     * )
      */
     public function index()
     {
-        //
+        return \App\Models\LuanPlatform::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @OA\Post(
+     *     path="/api/luan/platforms",
+     *     tags={"Luan Platforms"},
+     *     summary="Create a new LuanPlatform",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="nome", type="string"),
+     *             @OA\Property(property="icone", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Created")
+     * )
      */
-    public function create()
+    public function store(\App\Http\Requests\StoreLuanPlatformRequest $request)
     {
-        //
+        return \App\Models\LuanPlatform::create($request->all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Get(
+     *     path="/api/luan/platforms/{id}",
+     *     tags={"Luan Platforms"},
+     *     summary="Get LuanPlatform by ID",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function store(StoreLuanPlatformRequest $request)
+    public function show($id)
     {
-        //
+        return \App\Models\LuanPlatform::findOrFail($id);
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Put(
+     *     path="/api/luan/platforms/{id}",
+     *     tags={"Luan Platforms"},
+     *     summary="Update a LuanPlatform",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="nome", type="string"),
+     *             @OA\Property(property="icone", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Updated successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function show(LuanPlatform $luanPlatform)
+    public function update(\App\Http\Requests\UpdateLuanPlatformRequest $request, $id)
     {
-        //
+        $item = \App\Models\LuanPlatform::findOrFail($id);
+        $item->update($request->all());
+        return $item;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @OA\Delete(
+     *     path="/api/luan/platforms/{id}",
+     *     tags={"Luan Platforms"},
+     *     summary="Delete a LuanPlatform",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=204, description="Deleted successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function edit(LuanPlatform $luanPlatform)
+    public function destroy($id)
     {
-        //
+        $item = \App\Models\LuanPlatform::findOrFail($id);
+        $item->delete();
+        return response()->json(null, 204);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateLuanPlatformRequest $request, LuanPlatform $luanPlatform)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(LuanPlatform $luanPlatform)
-    {
-        //
-    }
 }

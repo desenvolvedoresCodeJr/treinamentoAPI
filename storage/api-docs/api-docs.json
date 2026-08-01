@@ -346,6 +346,1178 @@
                     }
                 }
             }
+        },
+        "/api/bruno/cart-items": {
+            "get": {
+                "tags": [
+                    "Bruno Cart Items"
+                ],
+                "summary": "List all BrunoCartItems",
+                "operationId": "80e21ab0b0f1bea776b0dcacd643e0b0",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bruno Cart Items"
+                ],
+                "summary": "Create a new BrunoCartItem",
+                "operationId": "8070789116b754f332bbdaca1c005fee",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "product_id": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/bruno/cart-items/{id}": {
+            "get": {
+                "tags": [
+                    "Bruno Cart Items"
+                ],
+                "summary": "Get BrunoCartItem by ID",
+                "operationId": "582b2230ef78efbc5abdb8a46ed07e22",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bruno Cart Items"
+                ],
+                "summary": "Update a BrunoCartItem",
+                "operationId": "0ba7c61f317032655eabcbbd1a37eb47",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "product_id": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bruno Cart Items"
+                ],
+                "summary": "Delete a BrunoCartItem",
+                "operationId": "0ca3addae90a885dc640d00acb540028",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/bruno/products": {
+            "get": {
+                "tags": [
+                    "Bruno Products"
+                ],
+                "summary": "List all BrunoProducts",
+                "operationId": "522da7bbb142934d43f6e07d6d8e78b6",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bruno Products"
+                ],
+                "summary": "Create a new BrunoProduct",
+                "operationId": "d99d59d9923437fc1832be2d44f9b9d2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "string"
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/bruno/products/{id}": {
+            "get": {
+                "tags": [
+                    "Bruno Products"
+                ],
+                "summary": "Get BrunoProduct by ID",
+                "operationId": "c232e9121f4950a99bbcd8b8deadc7b5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bruno Products"
+                ],
+                "summary": "Update a BrunoProduct",
+                "operationId": "017cab6cecd51d0f8aa8e85f6dbeb3c8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "string"
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bruno Products"
+                ],
+                "summary": "Delete a BrunoProduct",
+                "operationId": "d9fa37cc8df8ad725203f01aad06ea40",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/hadassa/categories": {
+            "get": {
+                "tags": [
+                    "Hadassa Categories"
+                ],
+                "summary": "List all HadassaCategorys",
+                "operationId": "15d96450af2d4c0c7e04a2e24e2e103e",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Hadassa Categories"
+                ],
+                "summary": "Create a new HadassaCategory",
+                "operationId": "c55589ffb8e1a692065fe72aedfc4b78",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "categoria": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/hadassa/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Hadassa Categories"
+                ],
+                "summary": "Get HadassaCategory by ID",
+                "operationId": "26b5709d2a069244d1ff6f8b7760bbcd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Hadassa Categories"
+                ],
+                "summary": "Update a HadassaCategory",
+                "operationId": "7c576aa2bf7f7ccb9c0edb0aef0063d4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "categoria": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Hadassa Categories"
+                ],
+                "summary": "Delete a HadassaCategory",
+                "operationId": "4cf7c56e67c601454f9d0cee8b804673",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/hadassa/posts": {
+            "get": {
+                "tags": [
+                    "Hadassa Posts"
+                ],
+                "summary": "List all HadassaPosts",
+                "operationId": "47326627ad93f923fa5f8c2cc3ff7a9c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Hadassa Posts"
+                ],
+                "summary": "Create a new HadassaPost",
+                "operationId": "fab31f6a9f4fdad77f7d93c8c496253c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string"
+                                    },
+                                    "descricao": {
+                                        "type": "string"
+                                    },
+                                    "id_categoria": {
+                                        "type": "string"
+                                    },
+                                    "imagem": {
+                                        "type": "string"
+                                    },
+                                    "author_id": {
+                                        "type": "string"
+                                    },
+                                    "data": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/hadassa/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Hadassa Posts"
+                ],
+                "summary": "Get HadassaPost by ID",
+                "operationId": "34530a559e2cad5ef40c107ef8bdc7a0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Hadassa Posts"
+                ],
+                "summary": "Update a HadassaPost",
+                "operationId": "c02a548b7ee453eaac6702a4b0c8d70e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string"
+                                    },
+                                    "descricao": {
+                                        "type": "string"
+                                    },
+                                    "id_categoria": {
+                                        "type": "string"
+                                    },
+                                    "imagem": {
+                                        "type": "string"
+                                    },
+                                    "author_id": {
+                                        "type": "string"
+                                    },
+                                    "data": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Hadassa Posts"
+                ],
+                "summary": "Delete a HadassaPost",
+                "operationId": "2f0e65602ce80fe3e53d5f8018b88f88",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/luan/games": {
+            "get": {
+                "tags": [
+                    "Luan Games"
+                ],
+                "summary": "List all LuanGames",
+                "operationId": "a26f62e25389aaa969578b131a1d7911",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Luan Games"
+                ],
+                "summary": "Create a new LuanGame",
+                "operationId": "58502840f11da078280ac50525c4ed3f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string"
+                                    },
+                                    "genero_id": {
+                                        "type": "string"
+                                    },
+                                    "plataforma_id": {
+                                        "type": "string"
+                                    },
+                                    "ano_lancamento": {
+                                        "type": "string"
+                                    },
+                                    "capa": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/luan/games/{id}": {
+            "get": {
+                "tags": [
+                    "Luan Games"
+                ],
+                "summary": "Get LuanGame by ID",
+                "operationId": "857235912bdd362b3b4714a29aa74003",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Luan Games"
+                ],
+                "summary": "Update a LuanGame",
+                "operationId": "8d130eb4da7a07a9be93cacb600cdbf3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string"
+                                    },
+                                    "genero_id": {
+                                        "type": "string"
+                                    },
+                                    "plataforma_id": {
+                                        "type": "string"
+                                    },
+                                    "ano_lancamento": {
+                                        "type": "string"
+                                    },
+                                    "capa": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Luan Games"
+                ],
+                "summary": "Delete a LuanGame",
+                "operationId": "69a2bcc0c1cf841cf6c52704c1e39aef",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/luan/genres": {
+            "get": {
+                "tags": [
+                    "Luan Genres"
+                ],
+                "summary": "List all LuanGenres",
+                "operationId": "913ec818ff9fae3176146b8ff0d2f4b5",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Luan Genres"
+                ],
+                "summary": "Create a new LuanGenre",
+                "operationId": "b4846eea7a14beba895952bd84a0c25e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "genero": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/luan/genres/{id}": {
+            "get": {
+                "tags": [
+                    "Luan Genres"
+                ],
+                "summary": "Get LuanGenre by ID",
+                "operationId": "94ab0b4aaa4db0a323770eaaaadcaaca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Luan Genres"
+                ],
+                "summary": "Update a LuanGenre",
+                "operationId": "b08e404ac14495e114dc29e7df90df98",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "genero": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Luan Genres"
+                ],
+                "summary": "Delete a LuanGenre",
+                "operationId": "b921131bd8fb5b113c71e73f41016367",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/luan/platforms": {
+            "get": {
+                "tags": [
+                    "Luan Platforms"
+                ],
+                "summary": "List all LuanPlatforms",
+                "operationId": "d110bd04a9ec882af30efae40c80f9be",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Luan Platforms"
+                ],
+                "summary": "Create a new LuanPlatform",
+                "operationId": "337658b7791a5467a3c5e6251a531198",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "icone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/luan/platforms/{id}": {
+            "get": {
+                "tags": [
+                    "Luan Platforms"
+                ],
+                "summary": "Get LuanPlatform by ID",
+                "operationId": "f73cdeb7448f3d034c1aafae9a198d0b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Luan Platforms"
+                ],
+                "summary": "Update a LuanPlatform",
+                "operationId": "dfda82a6c75e9b2028de8b56a45c97f3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "icone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Luan Platforms"
+                ],
+                "summary": "Delete a LuanPlatform",
+                "operationId": "cba76cb77fc2abe39a3459d6b8a56fad",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/luan/reviews": {
+            "get": {
+                "tags": [
+                    "Luan Reviews"
+                ],
+                "summary": "List all LuanReviews",
+                "operationId": "4adfb23c09541e36bb35449bc952feb1",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Luan Reviews"
+                ],
+                "summary": "Create a new LuanReview",
+                "operationId": "02a3aa7c922b979fc125ab64fa0a600b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "usuario_id": {
+                                        "type": "string"
+                                    },
+                                    "jogo_id": {
+                                        "type": "string"
+                                    },
+                                    "nota": {
+                                        "type": "string"
+                                    },
+                                    "comentario": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/luan/reviews/{id}": {
+            "get": {
+                "tags": [
+                    "Luan Reviews"
+                ],
+                "summary": "Get LuanReview by ID",
+                "operationId": "630814f8ab03cc7fdef849d6f50f65d8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Luan Reviews"
+                ],
+                "summary": "Update a LuanReview",
+                "operationId": "42044be6567044fd4f1bdf3378231bfc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "usuario_id": {
+                                        "type": "string"
+                                    },
+                                    "jogo_id": {
+                                        "type": "string"
+                                    },
+                                    "nota": {
+                                        "type": "string"
+                                    },
+                                    "comentario": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Luan Reviews"
+                ],
+                "summary": "Delete a LuanReview",
+                "operationId": "886ebdb3c15ce44d63d405079e3395f9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
         }
     },
     "tags": [
@@ -356,6 +1528,38 @@
         {
             "name": "Identity",
             "description": "Identity"
+        },
+        {
+            "name": "Bruno Cart Items",
+            "description": "Bruno Cart Items"
+        },
+        {
+            "name": "Bruno Products",
+            "description": "Bruno Products"
+        },
+        {
+            "name": "Hadassa Categories",
+            "description": "Hadassa Categories"
+        },
+        {
+            "name": "Hadassa Posts",
+            "description": "Hadassa Posts"
+        },
+        {
+            "name": "Luan Games",
+            "description": "Luan Games"
+        },
+        {
+            "name": "Luan Genres",
+            "description": "Luan Genres"
+        },
+        {
+            "name": "Luan Platforms",
+            "description": "Luan Platforms"
+        },
+        {
+            "name": "Luan Reviews",
+            "description": "Luan Reviews"
         }
     ]
 }

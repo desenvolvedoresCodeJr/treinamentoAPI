@@ -8,59 +8,102 @@ use App\Models\HadassaPost;
 
 class HadassaPostController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/hadassa/posts",
+     *     tags={"Hadassa Posts"},
+     *     summary="List all HadassaPosts",
+     *     @OA\Response(response=200, description="Successful operation")
+     * )
      */
     public function index()
     {
-        //
+        return \App\Models\HadassaPost::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @OA\Post(
+     *     path="/api/hadassa/posts",
+     *     tags={"Hadassa Posts"},
+     *     summary="Create a new HadassaPost",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="titulo", type="string"),
+     *             @OA\Property(property="descricao", type="string"),
+     *             @OA\Property(property="id_categoria", type="string"),
+     *             @OA\Property(property="imagem", type="string"),
+     *             @OA\Property(property="author_id", type="string"),
+     *             @OA\Property(property="data", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Created")
+     * )
      */
-    public function create()
+    public function store(\App\Http\Requests\StoreHadassaPostRequest $request)
     {
-        //
+        return \App\Models\HadassaPost::create($request->all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Get(
+     *     path="/api/hadassa/posts/{id}",
+     *     tags={"Hadassa Posts"},
+     *     summary="Get HadassaPost by ID",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function store(StoreHadassaPostRequest $request)
+    public function show($id)
     {
-        //
+        return \App\Models\HadassaPost::findOrFail($id);
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Put(
+     *     path="/api/hadassa/posts/{id}",
+     *     tags={"Hadassa Posts"},
+     *     summary="Update a HadassaPost",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="titulo", type="string"),
+     *             @OA\Property(property="descricao", type="string"),
+     *             @OA\Property(property="id_categoria", type="string"),
+     *             @OA\Property(property="imagem", type="string"),
+     *             @OA\Property(property="author_id", type="string"),
+     *             @OA\Property(property="data", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Updated successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function show(HadassaPost $hadassaPost)
+    public function update(\App\Http\Requests\UpdateHadassaPostRequest $request, $id)
     {
-        //
+        $item = \App\Models\HadassaPost::findOrFail($id);
+        $item->update($request->all());
+        return $item;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @OA\Delete(
+     *     path="/api/hadassa/posts/{id}",
+     *     tags={"Hadassa Posts"},
+     *     summary="Delete a HadassaPost",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=204, description="Deleted successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function edit(HadassaPost $hadassaPost)
+    public function destroy($id)
     {
-        //
+        $item = \App\Models\HadassaPost::findOrFail($id);
+        $item->delete();
+        return response()->json(null, 204);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateHadassaPostRequest $request, HadassaPost $hadassaPost)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(HadassaPost $hadassaPost)
-    {
-        //
-    }
 }

@@ -8,59 +8,92 @@ use App\Models\HadassaCategory;
 
 class HadassaCategoryController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/hadassa/categories",
+     *     tags={"Hadassa Categories"},
+     *     summary="List all HadassaCategorys",
+     *     @OA\Response(response=200, description="Successful operation")
+     * )
      */
     public function index()
     {
-        //
+        return \App\Models\HadassaCategory::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @OA\Post(
+     *     path="/api/hadassa/categories",
+     *     tags={"Hadassa Categories"},
+     *     summary="Create a new HadassaCategory",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="categoria", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Created")
+     * )
      */
-    public function create()
+    public function store(\App\Http\Requests\StoreHadassaCategoryRequest $request)
     {
-        //
+        return \App\Models\HadassaCategory::create($request->all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Get(
+     *     path="/api/hadassa/categories/{id}",
+     *     tags={"Hadassa Categories"},
+     *     summary="Get HadassaCategory by ID",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function store(StoreHadassaCategoryRequest $request)
+    public function show($id)
     {
-        //
+        return \App\Models\HadassaCategory::findOrFail($id);
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Put(
+     *     path="/api/hadassa/categories/{id}",
+     *     tags={"Hadassa Categories"},
+     *     summary="Update a HadassaCategory",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="categoria", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Updated successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function show(HadassaCategory $hadassaCategory)
+    public function update(\App\Http\Requests\UpdateHadassaCategoryRequest $request, $id)
     {
-        //
+        $item = \App\Models\HadassaCategory::findOrFail($id);
+        $item->update($request->all());
+        return $item;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @OA\Delete(
+     *     path="/api/hadassa/categories/{id}",
+     *     tags={"Hadassa Categories"},
+     *     summary="Delete a HadassaCategory",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=204, description="Deleted successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function edit(HadassaCategory $hadassaCategory)
+    public function destroy($id)
     {
-        //
+        $item = \App\Models\HadassaCategory::findOrFail($id);
+        $item->delete();
+        return response()->json(null, 204);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateHadassaCategoryRequest $request, HadassaCategory $hadassaCategory)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(HadassaCategory $hadassaCategory)
-    {
-        //
-    }
 }

@@ -8,59 +8,92 @@ use App\Models\LuanGenre;
 
 class LuanGenreController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/luan/genres",
+     *     tags={"Luan Genres"},
+     *     summary="List all LuanGenres",
+     *     @OA\Response(response=200, description="Successful operation")
+     * )
      */
     public function index()
     {
-        //
+        return \App\Models\LuanGenre::all();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @OA\Post(
+     *     path="/api/luan/genres",
+     *     tags={"Luan Genres"},
+     *     summary="Create a new LuanGenre",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="genero", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Created")
+     * )
      */
-    public function create()
+    public function store(\App\Http\Requests\StoreLuanGenreRequest $request)
     {
-        //
+        return \App\Models\LuanGenre::create($request->all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Get(
+     *     path="/api/luan/genres/{id}",
+     *     tags={"Luan Genres"},
+     *     summary="Get LuanGenre by ID",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function store(StoreLuanGenreRequest $request)
+    public function show($id)
     {
-        //
+        return \App\Models\LuanGenre::findOrFail($id);
     }
 
     /**
-     * Display the specified resource.
+     * @OA\Put(
+     *     path="/api/luan/genres/{id}",
+     *     tags={"Luan Genres"},
+     *     summary="Update a LuanGenre",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="genero", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Updated successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function show(LuanGenre $luanGenre)
+    public function update(\App\Http\Requests\UpdateLuanGenreRequest $request, $id)
     {
-        //
+        $item = \App\Models\LuanGenre::findOrFail($id);
+        $item->update($request->all());
+        return $item;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @OA\Delete(
+     *     path="/api/luan/genres/{id}",
+     *     tags={"Luan Genres"},
+     *     summary="Delete a LuanGenre",
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=204, description="Deleted successfully"),
+     *     @OA\Response(response=404, description="Not found")
+     * )
      */
-    public function edit(LuanGenre $luanGenre)
+    public function destroy($id)
     {
-        //
+        $item = \App\Models\LuanGenre::findOrFail($id);
+        $item->delete();
+        return response()->json(null, 204);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateLuanGenreRequest $request, LuanGenre $luanGenre)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(LuanGenre $luanGenre)
-    {
-        //
-    }
 }
