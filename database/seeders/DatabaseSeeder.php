@@ -15,14 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             IdentitySeeder::class,
-            BayletUserSeeder::class,
-            BayletCategorySeeder::class,
-            BayletPublicationSeeder::class,
-            BalduttiProductSeeder::class,
-            DelioUserSeeder::class,
-            DelioAlbumSeeder::class,
-            DelioTrackSeeder::class,
-            DelioRatingSeeder::class,
         ]);
     }
 }
