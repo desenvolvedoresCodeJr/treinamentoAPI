@@ -26,16 +26,16 @@ Route::get('/identities', [IdentityController::class, 'index']);
 
 
 
-use App\Http\Controllers\BrunoProductController;
-use App\Http\Controllers\BrunoCartItemController;
+use App\Http\Controllers\Bruno\BrunoProductController;
+use App\Http\Controllers\Bruno\BrunoCartItemController;
 
-use App\Http\Controllers\HadassaCategoryController;
-use App\Http\Controllers\HadassaPostController;
+use App\Http\Controllers\Hadassa\HadassaCategoryController;
+use App\Http\Controllers\Hadassa\HadassaPostController;
 
-use App\Http\Controllers\LuanPlatformController;
-use App\Http\Controllers\LuanGenreController;
-use App\Http\Controllers\LuanGameController;
-use App\Http\Controllers\LuanReviewController;
+use App\Http\Controllers\Luan\LuanPlatformController;
+use App\Http\Controllers\Luan\LuanGenreController;
+use App\Http\Controllers\Luan\LuanGameController;
+use App\Http\Controllers\Luan\LuanReviewController;
 
 Route::prefix('/bruno')->group(function () {
     Route::apiResource('products', BrunoProductController::class);

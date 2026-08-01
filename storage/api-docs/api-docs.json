@@ -350,10 +350,10 @@
         "/api/bruno/cart-items": {
             "get": {
                 "tags": [
-                    "Bruno Cart Items"
+                    "Bruno"
                 ],
                 "summary": "List all BrunoCartItems",
-                "operationId": "80e21ab0b0f1bea776b0dcacd643e0b0",
+                "operationId": "22552278631fe0f3bbea63c2a89b0f3d",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -362,10 +362,10 @@
             },
             "post": {
                 "tags": [
-                    "Bruno Cart Items"
+                    "Bruno"
                 ],
                 "summary": "Create a new BrunoCartItem",
-                "operationId": "8070789116b754f332bbdaca1c005fee",
+                "operationId": "2f3fa02ea8eb5db94d638a8f7db33408",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -397,10 +397,10 @@
         "/api/bruno/cart-items/{id}": {
             "get": {
                 "tags": [
-                    "Bruno Cart Items"
+                    "Bruno"
                 ],
                 "summary": "Get BrunoCartItem by ID",
-                "operationId": "582b2230ef78efbc5abdb8a46ed07e22",
+                "operationId": "2cf011ea70fe478097a5c1819116c830",
                 "parameters": [
                     {
                         "name": "id",
@@ -422,10 +422,10 @@
             },
             "put": {
                 "tags": [
-                    "Bruno Cart Items"
+                    "Bruno"
                 ],
                 "summary": "Update a BrunoCartItem",
-                "operationId": "0ba7c61f317032655eabcbbd1a37eb47",
+                "operationId": "4a683c2dc8a9f75bf37971c1706c986e",
                 "parameters": [
                     {
                         "name": "id",
@@ -468,10 +468,10 @@
             },
             "delete": {
                 "tags": [
-                    "Bruno Cart Items"
+                    "Bruno"
                 ],
                 "summary": "Delete a BrunoCartItem",
-                "operationId": "0ca3addae90a885dc640d00acb540028",
+                "operationId": "aa1036b266201926cacf4153de6cfe09",
                 "parameters": [
                     {
                         "name": "id",
@@ -495,10 +495,10 @@
         "/api/bruno/products": {
             "get": {
                 "tags": [
-                    "Bruno Products"
+                    "Bruno"
                 ],
                 "summary": "List all BrunoProducts",
-                "operationId": "522da7bbb142934d43f6e07d6d8e78b6",
+                "operationId": "b53d9b294ac49c083b82c1d291bc9dd4",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -507,10 +507,10 @@
             },
             "post": {
                 "tags": [
-                    "Bruno Products"
+                    "Bruno"
                 ],
                 "summary": "Create a new BrunoProduct",
-                "operationId": "d99d59d9923437fc1832be2d44f9b9d2",
+                "operationId": "ea0249872079c47b9b3b9f588ea81dcf",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -545,10 +545,10 @@
         "/api/bruno/products/{id}": {
             "get": {
                 "tags": [
-                    "Bruno Products"
+                    "Bruno"
                 ],
                 "summary": "Get BrunoProduct by ID",
-                "operationId": "c232e9121f4950a99bbcd8b8deadc7b5",
+                "operationId": "5a6cfa2d629ac7ff790412e0840bda73",
                 "parameters": [
                     {
                         "name": "id",
@@ -570,10 +570,10 @@
             },
             "put": {
                 "tags": [
-                    "Bruno Products"
+                    "Bruno"
                 ],
                 "summary": "Update a BrunoProduct",
-                "operationId": "017cab6cecd51d0f8aa8e85f6dbeb3c8",
+                "operationId": "faeed0d3c3d8cf4f776d95c539c73972",
                 "parameters": [
                     {
                         "name": "id",
@@ -619,10 +619,10 @@
             },
             "delete": {
                 "tags": [
-                    "Bruno Products"
+                    "Bruno"
                 ],
                 "summary": "Delete a BrunoProduct",
-                "operationId": "d9fa37cc8df8ad725203f01aad06ea40",
+                "operationId": "362f1af6e54ffe9d5573665f039482bd",
                 "parameters": [
                     {
                         "name": "id",
@@ -646,10 +646,10 @@
         "/api/hadassa/categories": {
             "get": {
                 "tags": [
-                    "Hadassa Categories"
+                    "Hadassa"
                 ],
                 "summary": "List all HadassaCategorys",
-                "operationId": "15d96450af2d4c0c7e04a2e24e2e103e",
+                "operationId": "4deb2f28840c83ab18d84efa410d038e",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -658,10 +658,10 @@
             },
             "post": {
                 "tags": [
-                    "Hadassa Categories"
+                    "Hadassa"
                 ],
                 "summary": "Create a new HadassaCategory",
-                "operationId": "c55589ffb8e1a692065fe72aedfc4b78",
+                "operationId": "9d984667bd25b5cbb9a4693731ef3b07",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -687,10 +687,10 @@
         "/api/hadassa/categories/{id}": {
             "get": {
                 "tags": [
-                    "Hadassa Categories"
+                    "Hadassa"
                 ],
                 "summary": "Get HadassaCategory by ID",
-                "operationId": "26b5709d2a069244d1ff6f8b7760bbcd",
+                "operationId": "64a4bb8d82f06d1c567c038e69801d68",
                 "parameters": [
                     {
                         "name": "id",
@@ -712,10 +712,10 @@
             },
             "put": {
                 "tags": [
-                    "Hadassa Categories"
+                    "Hadassa"
                 ],
                 "summary": "Update a HadassaCategory",
-                "operationId": "7c576aa2bf7f7ccb9c0edb0aef0063d4",
+                "operationId": "6986a74585b53526c96f1eac6c334d0d",
                 "parameters": [
                     {
                         "name": "id",
@@ -752,10 +752,10 @@
             },
             "delete": {
                 "tags": [
-                    "Hadassa Categories"
+                    "Hadassa"
                 ],
                 "summary": "Delete a HadassaCategory",
-                "operationId": "4cf7c56e67c601454f9d0cee8b804673",
+                "operationId": "c0e201112f015d59b7f085c067842c7f",
                 "parameters": [
                     {
                         "name": "id",
@@ -779,10 +779,10 @@
         "/api/hadassa/posts": {
             "get": {
                 "tags": [
-                    "Hadassa Posts"
+                    "Hadassa"
                 ],
                 "summary": "List all HadassaPosts",
-                "operationId": "47326627ad93f923fa5f8c2cc3ff7a9c",
+                "operationId": "6ecc59a818640b8abc46948305147151",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -791,10 +791,10 @@
             },
             "post": {
                 "tags": [
-                    "Hadassa Posts"
+                    "Hadassa"
                 ],
                 "summary": "Create a new HadassaPost",
-                "operationId": "fab31f6a9f4fdad77f7d93c8c496253c",
+                "operationId": "0468444f274f913a5870db4470b48fc5",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -835,10 +835,10 @@
         "/api/hadassa/posts/{id}": {
             "get": {
                 "tags": [
-                    "Hadassa Posts"
+                    "Hadassa"
                 ],
                 "summary": "Get HadassaPost by ID",
-                "operationId": "34530a559e2cad5ef40c107ef8bdc7a0",
+                "operationId": "d5d69ae3c1482645d17be906d2dd464a",
                 "parameters": [
                     {
                         "name": "id",
@@ -860,10 +860,10 @@
             },
             "put": {
                 "tags": [
-                    "Hadassa Posts"
+                    "Hadassa"
                 ],
                 "summary": "Update a HadassaPost",
-                "operationId": "c02a548b7ee453eaac6702a4b0c8d70e",
+                "operationId": "7e42cf5b216b85dfcfaaec8cf9f269be",
                 "parameters": [
                     {
                         "name": "id",
@@ -915,10 +915,10 @@
             },
             "delete": {
                 "tags": [
-                    "Hadassa Posts"
+                    "Hadassa"
                 ],
                 "summary": "Delete a HadassaPost",
-                "operationId": "2f0e65602ce80fe3e53d5f8018b88f88",
+                "operationId": "53b609a5215898a62bbda50f4a9a6a06",
                 "parameters": [
                     {
                         "name": "id",
@@ -942,10 +942,10 @@
         "/api/luan/games": {
             "get": {
                 "tags": [
-                    "Luan Games"
+                    "Luan"
                 ],
                 "summary": "List all LuanGames",
-                "operationId": "a26f62e25389aaa969578b131a1d7911",
+                "operationId": "397de77bd707128c3181f103299a6a9b",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -954,10 +954,10 @@
             },
             "post": {
                 "tags": [
-                    "Luan Games"
+                    "Luan"
                 ],
                 "summary": "Create a new LuanGame",
-                "operationId": "58502840f11da078280ac50525c4ed3f",
+                "operationId": "1e776b7ebfc4ea2811482a28b480d4ce",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -995,10 +995,10 @@
         "/api/luan/games/{id}": {
             "get": {
                 "tags": [
-                    "Luan Games"
+                    "Luan"
                 ],
                 "summary": "Get LuanGame by ID",
-                "operationId": "857235912bdd362b3b4714a29aa74003",
+                "operationId": "bfcdf7b683174f08feddf640be29ddd2",
                 "parameters": [
                     {
                         "name": "id",
@@ -1020,10 +1020,10 @@
             },
             "put": {
                 "tags": [
-                    "Luan Games"
+                    "Luan"
                 ],
                 "summary": "Update a LuanGame",
-                "operationId": "8d130eb4da7a07a9be93cacb600cdbf3",
+                "operationId": "b27e373ad91916e91dd7da6d6cd51a2b",
                 "parameters": [
                     {
                         "name": "id",
@@ -1072,10 +1072,10 @@
             },
             "delete": {
                 "tags": [
-                    "Luan Games"
+                    "Luan"
                 ],
                 "summary": "Delete a LuanGame",
-                "operationId": "69a2bcc0c1cf841cf6c52704c1e39aef",
+                "operationId": "38e7b8b90434418abe0e6a4f41a1985f",
                 "parameters": [
                     {
                         "name": "id",
@@ -1099,10 +1099,10 @@
         "/api/luan/genres": {
             "get": {
                 "tags": [
-                    "Luan Genres"
+                    "Luan"
                 ],
                 "summary": "List all LuanGenres",
-                "operationId": "913ec818ff9fae3176146b8ff0d2f4b5",
+                "operationId": "a938d487f07595bc8ff1f256dae31ada",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -1111,10 +1111,10 @@
             },
             "post": {
                 "tags": [
-                    "Luan Genres"
+                    "Luan"
                 ],
                 "summary": "Create a new LuanGenre",
-                "operationId": "b4846eea7a14beba895952bd84a0c25e",
+                "operationId": "294ab814c378480093d8f9214fdf6122",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1140,10 +1140,10 @@
         "/api/luan/genres/{id}": {
             "get": {
                 "tags": [
-                    "Luan Genres"
+                    "Luan"
                 ],
                 "summary": "Get LuanGenre by ID",
-                "operationId": "94ab0b4aaa4db0a323770eaaaadcaaca",
+                "operationId": "e7562e68c71695ea37a2503fb5357f98",
                 "parameters": [
                     {
                         "name": "id",
@@ -1165,10 +1165,10 @@
             },
             "put": {
                 "tags": [
-                    "Luan Genres"
+                    "Luan"
                 ],
                 "summary": "Update a LuanGenre",
-                "operationId": "b08e404ac14495e114dc29e7df90df98",
+                "operationId": "124ed675d57dfe24cd5c6dd5e1bb928e",
                 "parameters": [
                     {
                         "name": "id",
@@ -1205,10 +1205,10 @@
             },
             "delete": {
                 "tags": [
-                    "Luan Genres"
+                    "Luan"
                 ],
                 "summary": "Delete a LuanGenre",
-                "operationId": "b921131bd8fb5b113c71e73f41016367",
+                "operationId": "b342101ddfb1a2bd4be09862800d689f",
                 "parameters": [
                     {
                         "name": "id",
@@ -1232,10 +1232,10 @@
         "/api/luan/platforms": {
             "get": {
                 "tags": [
-                    "Luan Platforms"
+                    "Luan"
                 ],
                 "summary": "List all LuanPlatforms",
-                "operationId": "d110bd04a9ec882af30efae40c80f9be",
+                "operationId": "e9ea437ada3ce25b7a7b3f6ab3498a87",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -1244,10 +1244,10 @@
             },
             "post": {
                 "tags": [
-                    "Luan Platforms"
+                    "Luan"
                 ],
                 "summary": "Create a new LuanPlatform",
-                "operationId": "337658b7791a5467a3c5e6251a531198",
+                "operationId": "6aa576533b0d55b25a8fbfc710ef89a1",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1276,10 +1276,10 @@
         "/api/luan/platforms/{id}": {
             "get": {
                 "tags": [
-                    "Luan Platforms"
+                    "Luan"
                 ],
                 "summary": "Get LuanPlatform by ID",
-                "operationId": "f73cdeb7448f3d034c1aafae9a198d0b",
+                "operationId": "10b391fba828b245fc674d3e572fcdd5",
                 "parameters": [
                     {
                         "name": "id",
@@ -1301,10 +1301,10 @@
             },
             "put": {
                 "tags": [
-                    "Luan Platforms"
+                    "Luan"
                 ],
                 "summary": "Update a LuanPlatform",
-                "operationId": "dfda82a6c75e9b2028de8b56a45c97f3",
+                "operationId": "786de46cd21df9e96afd3b505a3026fa",
                 "parameters": [
                     {
                         "name": "id",
@@ -1344,10 +1344,10 @@
             },
             "delete": {
                 "tags": [
-                    "Luan Platforms"
+                    "Luan"
                 ],
                 "summary": "Delete a LuanPlatform",
-                "operationId": "cba76cb77fc2abe39a3459d6b8a56fad",
+                "operationId": "71d7912106a1081239a685f209c0b83a",
                 "parameters": [
                     {
                         "name": "id",
@@ -1371,10 +1371,10 @@
         "/api/luan/reviews": {
             "get": {
                 "tags": [
-                    "Luan Reviews"
+                    "Luan"
                 ],
                 "summary": "List all LuanReviews",
-                "operationId": "4adfb23c09541e36bb35449bc952feb1",
+                "operationId": "32aa6adba0cdfb0df85af4fcb0f5824b",
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -1383,10 +1383,10 @@
             },
             "post": {
                 "tags": [
-                    "Luan Reviews"
+                    "Luan"
                 ],
                 "summary": "Create a new LuanReview",
-                "operationId": "02a3aa7c922b979fc125ab64fa0a600b",
+                "operationId": "efdcd3e47eb31d2b1c9c27fc28d94052",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -1421,10 +1421,10 @@
         "/api/luan/reviews/{id}": {
             "get": {
                 "tags": [
-                    "Luan Reviews"
+                    "Luan"
                 ],
                 "summary": "Get LuanReview by ID",
-                "operationId": "630814f8ab03cc7fdef849d6f50f65d8",
+                "operationId": "e74be748a2be59c314f2733544e45369",
                 "parameters": [
                     {
                         "name": "id",
@@ -1446,10 +1446,10 @@
             },
             "put": {
                 "tags": [
-                    "Luan Reviews"
+                    "Luan"
                 ],
                 "summary": "Update a LuanReview",
-                "operationId": "42044be6567044fd4f1bdf3378231bfc",
+                "operationId": "6151a76c9aef0c9ce452196fd1c84db0",
                 "parameters": [
                     {
                         "name": "id",
@@ -1495,10 +1495,10 @@
             },
             "delete": {
                 "tags": [
-                    "Luan Reviews"
+                    "Luan"
                 ],
                 "summary": "Delete a LuanReview",
-                "operationId": "886ebdb3c15ce44d63d405079e3395f9",
+                "operationId": "edfabc3c6038473f5ca2e89cecf800a4",
                 "parameters": [
                     {
                         "name": "id",
@@ -1530,36 +1530,16 @@
             "description": "Identity"
         },
         {
-            "name": "Bruno Cart Items",
-            "description": "Bruno Cart Items"
+            "name": "Bruno",
+            "description": "Bruno"
         },
         {
-            "name": "Bruno Products",
-            "description": "Bruno Products"
+            "name": "Hadassa",
+            "description": "Hadassa"
         },
         {
-            "name": "Hadassa Categories",
-            "description": "Hadassa Categories"
-        },
-        {
-            "name": "Hadassa Posts",
-            "description": "Hadassa Posts"
-        },
-        {
-            "name": "Luan Games",
-            "description": "Luan Games"
-        },
-        {
-            "name": "Luan Genres",
-            "description": "Luan Genres"
-        },
-        {
-            "name": "Luan Platforms",
-            "description": "Luan Platforms"
-        },
-        {
-            "name": "Luan Reviews",
-            "description": "Luan Reviews"
+            "name": "Luan",
+            "description": "Luan"
         }
     ]
 }
