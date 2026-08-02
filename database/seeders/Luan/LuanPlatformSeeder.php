@@ -2,8 +2,8 @@
 
 namespace Database\Seeders\Luan;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Luan\LuanPlatform;
 
 class LuanPlatformSeeder extends Seeder
 {
@@ -12,6 +12,15 @@ class LuanPlatformSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $platforms = [
+            'PC',
+            'PlayStation',
+            'Xbox',
+            'Nintendo'
+        ];
+
+        foreach ($platforms as $platform) {
+            LuanPlatform::firstOrCreate(['nome' => $platform]);
+        }
     }
 }

@@ -15,6 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             IdentitySeeder::class,
+            \Database\Seeders\Bruno\BrunoCartItemSeeder::class,
+            \Database\Seeders\Bruno\BrunoProductSeeder::class,
+            \Database\Seeders\Hadassa\HadassaCategorySeeder::class,
+            \Database\Seeders\Hadassa\HadassaPostSeeder::class,
+            \Database\Seeders\Luan\LuanGameSeeder::class,
+            \Database\Seeders\Luan\LuanGenreSeeder::class,
+            \Database\Seeders\Luan\LuanPlatformSeeder::class,
+            \Database\Seeders\Luan\LuanReviewSeeder::class,
         ]);
     }
 }
