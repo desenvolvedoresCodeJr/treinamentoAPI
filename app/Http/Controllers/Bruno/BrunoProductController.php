@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Bruno;
 use App\Http\Requests\Bruno\StoreBrunoProductRequest;
 use App\Http\Requests\Bruno\UpdateBrunoProductRequest;
 use App\Models\Bruno\BrunoProduct;
+use Illuminate\Support\Facades\Storage;
 
 class BrunoProductController extends \App\Http\Controllers\Controller
 {
@@ -41,7 +42,12 @@ class BrunoProductController extends \App\Http\Controllers\Controller
      */
     public function store(\App\Http\Requests\Bruno\StoreBrunoProductRequest $request)
     {
-        return \App\Models\Bruno\BrunoProduct::create($request->all());
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('bruno_products', 'public');
+            $data['image_url'] = Storage::url($path);
+        }
+        return \App\Models\Bruno\BrunoProduct::create($data);
     }
 
     /**
@@ -81,7 +87,16 @@ class BrunoProductController extends \App\Http\Controllers\Controller
     public function update(\App\Http\Requests\Bruno\UpdateBrunoProductRequest $request, $id)
     {
         $item = \App\Models\Bruno\BrunoProduct::findOrFail($id);
-        $item->update($request->all());
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            if ($item->image_url) {
+                $oldPath = str_replace('/storage/', '', $item->image_url);
+                Storage::disk('public')->delete($oldPath);
+            }
+            $path = $request->file('image')->store('bruno_products', 'public');
+            $data['image_url'] = Storage::url($path);
+        }
+        $item->update($data);
         return $item;
     }
 
