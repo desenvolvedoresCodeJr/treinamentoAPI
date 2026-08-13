@@ -185,4 +185,34 @@ class AuthController extends Controller
             'message' => 'Logged out successfully'
         ]);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/users",
+     *     summary="Get list of all users with id and name",
+     *     tags={"Authentication"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="integer", example=200),
+     *             @OA\Property(property="users", type="array",
+     *                 @OA\Items(
+     *                     @OA\Property(property="id", type="integer", example=1),
+     *                     @OA\Property(property="name", type="string", example="John Doe")
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
+    public function index()
+    {
+        $users = User::select('id', 'name')->get();
+        
+        return response()->json([
+            'status' => 200,
+            'users' => $users
+        ]);
+    }
 }

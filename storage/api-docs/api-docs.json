@@ -309,6 +309,49 @@
                 ]
             }
         },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get list of all users with id and name",
+                "operationId": "6ab80e1d0649fe5786bbd88e91df9b40",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "users": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "John Doe"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/identities": {
             "get": {
                 "tags": [
@@ -643,6 +686,244 @@
                 }
             }
         },
+        "/api/gustavo/categories": {
+            "get": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "List all GustavoCategory",
+                "operationId": "d045eb5c20cd4a35abf3feb4d72f94f2",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Create a new GustavoCategory",
+                "operationId": "3dae26ee595352fdc61fdb8005e7ff37",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/gustavo/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Get a specific GustavoCategory",
+                "operationId": "d09a4cf1b8f82ea8850ec28a44e112ca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Update a specific GustavoCategory",
+                "operationId": "e71864d499bf49ac3eecaea8881fd6c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Delete a specific GustavoCategory",
+                "operationId": "db99de3d6c5ee804992fcf90cb2099c1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/gustavo/products": {
+            "get": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "List all GustavoProduct",
+                "operationId": "988590ad23411e1d66807bf97f01efda",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Create a new GustavoProduct",
+                "operationId": "e2f9dad6284e0bded4d372e73cb7d4ee",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/gustavo/products/{id}": {
+            "get": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Get a specific GustavoProduct",
+                "operationId": "26bbddcab3d6f1114ac24d092e90e47a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Update a specific GustavoProduct",
+                "operationId": "ee2621e7fde38393dd5c26cde48a69f6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Gustavo"
+                ],
+                "summary": "Delete a specific GustavoProduct",
+                "operationId": "6b6208ba64712f30e8cd035fcb8ebb72",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
         "/api/hadassa/categories": {
             "get": {
                 "tags": [
@@ -932,6 +1213,125 @@
                 "responses": {
                     "204": {
                         "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/laura/events": {
+            "get": {
+                "tags": [
+                    "Laura"
+                ],
+                "summary": "List all LauraEvent",
+                "operationId": "ebfdf412ecf7691216662c242c38c28f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Laura"
+                ],
+                "summary": "Create a new LauraEvent",
+                "operationId": "5b31ae65616607500725372d780d3100",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/laura/events/{id}": {
+            "get": {
+                "tags": [
+                    "Laura"
+                ],
+                "summary": "Get a specific LauraEvent",
+                "operationId": "4227344583107ad77222e876de8e314e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Laura"
+                ],
+                "summary": "Update a specific LauraEvent",
+                "operationId": "9ec78b8eb2ade2150d9ae54e3bfb17f6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Laura"
+                ],
+                "summary": "Delete a specific LauraEvent",
+                "operationId": "766067e341d5e471634b1a38611616c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
                     },
                     "404": {
                         "description": "Not found"
@@ -1518,6 +1918,363 @@
                     }
                 }
             }
+        },
+        "/api/sophia/characters": {
+            "get": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "List all SophiaCharacter",
+                "operationId": "87433ef0006eba15e7bde69cf38d6c88",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Create a new SophiaCharacter",
+                "operationId": "4fd8cc9588f985668272bc748d93257d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/sophia/characters/{id}": {
+            "get": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Get a specific SophiaCharacter",
+                "operationId": "124797ed227b1f44580c73687dc295de",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Update a specific SophiaCharacter",
+                "operationId": "3b94c15879a279b67d8f13961a75a3d2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Delete a specific SophiaCharacter",
+                "operationId": "752e0147b70a57611d79b1818cd5c261",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/sophia/comments": {
+            "get": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "List all SophiaComment",
+                "operationId": "c9c4594bd702cf4b09ea1b4717bbc00c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Create a new SophiaComment",
+                "operationId": "bce88238b17a5074d5dd9f88bdcc860e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/sophia/comments/{id}": {
+            "get": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Get a specific SophiaComment",
+                "operationId": "552ba1bf07487878b8223494743c20c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Update a specific SophiaComment",
+                "operationId": "26534194f131757f4df6d793e9f53d78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Delete a specific SophiaComment",
+                "operationId": "4c52ba818b1d21da2fcd921332f4598c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/sophia/posts": {
+            "get": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "List all SophiaPost",
+                "operationId": "2b09f4dc9c80d7442d76c2a77d73fe43",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Create a new SophiaPost",
+                "operationId": "a1303bc26f77a76479b79a540a46ddf4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/sophia/posts/{id}": {
+            "get": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Get a specific SophiaPost",
+                "operationId": "3d3d9db2b7223de6571e4ad60cf02d69",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Update a specific SophiaPost",
+                "operationId": "db4f1c1d9a797af4a8ba1fed2fdea70d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sophia"
+                ],
+                "summary": "Delete a specific SophiaPost",
+                "operationId": "7b85b4c8b5bdf52bc97bffe32800d5ed",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
         }
     },
     "tags": [
@@ -1534,12 +2291,24 @@
             "description": "Bruno"
         },
         {
+            "name": "Gustavo",
+            "description": "Gustavo"
+        },
+        {
             "name": "Hadassa",
             "description": "Hadassa"
         },
         {
+            "name": "Laura",
+            "description": "Laura"
+        },
+        {
             "name": "Luan",
             "description": "Luan"
+        },
+        {
+            "name": "Sophia",
+            "description": "Sophia"
         }
     ]
 }

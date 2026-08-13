@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/users', [AuthController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
@@ -52,4 +53,26 @@ Route::prefix('/luan')->group(function () {
     Route::apiResource('genres', LuanGenreController::class);
     Route::apiResource('games', LuanGameController::class);
     Route::apiResource('reviews', LuanReviewController::class);
+});
+
+use App\Http\Controllers\GustavoProductController;
+use App\Http\Controllers\GustavoCategoryController;
+use App\Http\Controllers\SophiaCharacterController;
+use App\Http\Controllers\SophiaPostController;
+use App\Http\Controllers\SophiaCommentController;
+use App\Http\Controllers\LauraEventController;
+
+Route::prefix('/gustavo')->group(function () {
+    Route::apiResource('categories', GustavoCategoryController::class);
+    Route::apiResource('products', GustavoProductController::class);
+});
+
+Route::prefix('/sophia')->group(function () {
+    Route::apiResource('characters', SophiaCharacterController::class);
+    Route::apiResource('posts', SophiaPostController::class);
+    Route::apiResource('comments', SophiaCommentController::class);
+});
+
+Route::prefix('/laura')->group(function () {
+    Route::apiResource('events', LauraEventController::class);
 });
